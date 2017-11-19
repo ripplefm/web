@@ -4,6 +4,7 @@ export const actions = {
   START_AUTH: 'START_AUTH',
   RECIEVE_USER: 'RECIEVE_USER',
   AUTH_ERROR: 'AUTH_ERROR',
+  REGISTRATION_SUCCESS: 'REGISTRATION_SUCCESS',
   TOGGLE_AUTH_MODAL: 'TOGGLE_AUTH_MODAL',
   SET_AUTH_MODAL_TAB: 'SET_AUTH_MODAL_TAB'
 };
@@ -28,6 +29,12 @@ function authError(error) {
   };
 }
 
+function registrationSuccess() {
+  return {
+    type: actions.REGISTRATION_SUCCESS
+  };
+}
+
 function toggleModal(tab) {
   return {
     type: actions.TOGGLE_AUTH_MODAL,
@@ -46,6 +53,18 @@ export function createGuestUser() {
   return async dispatch => {
     const data = await ripple.createGuest();
     dispatch(recieveUser(data.user));
+  };
+}
+
+export function registerUser(username, email, password) {
+  return async dispatch => {
+    dispatch(startAuth());
+    try {
+      const data = await ripple.register(username, email, password);
+      dispatch(registrationSuccess());
+    } catch (err) {
+      dispatch(authError(err));
+    }
   };
 }
 

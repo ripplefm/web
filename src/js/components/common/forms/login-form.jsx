@@ -1,11 +1,7 @@
 import React, { Component } from 'react';
-import styled from 'react-emotion';
-import { Form, Icon, Input, Button, Alert } from 'antd';
-
-const PaddedForm = styled(Form)`
-  margin-top: 16px;
-  padding: 16px 64px;
-`;
+import { Form, Input, Alert } from 'antd';
+import PaddedForm from './padded-form';
+import IconButton from '../icon-button';
 
 class LoginForm extends Component {
   render() {
@@ -43,9 +39,7 @@ class LoginForm extends Component {
               closable
             />
           ) : null}
-          <Button type="primary" htmlType="submit" loading={loading}>
-            Log In {loading ? null : <Icon type="right" />}
-          </Button>
+          <IconButton text="Log In" icon="right" loading={loading} />
         </Form.Item>
       </PaddedForm>
     );

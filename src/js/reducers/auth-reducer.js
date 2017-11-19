@@ -22,6 +22,8 @@ export default function(state = initialState, action) {
       };
     case actions.AUTH_ERROR:
       return { ...state, loading: false, error: action.error };
+    case actions.REGISTRATION_SUCCESS:
+      return { ...state, loading: false, error: undefined, modalOpen: false };
     case actions.TOGGLE_AUTH_MODAL:
       return {
         ...state,

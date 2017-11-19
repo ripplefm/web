@@ -5,6 +5,7 @@ import { Modal, Tabs } from 'antd';
 import {
   setAuthModalTab,
   login,
+  registerUser,
   toggleAuthModal
 } from '../../../actions/auth-actions';
 import Logo from '../navbar/logo';
@@ -34,6 +35,8 @@ const mapDispatchToProps = dispatch => {
     onTabChange: tab => dispatch(setAuthModalTab(tab)),
     login: (emailOrUsername, password) =>
       dispatch(login(emailOrUsername, password)),
+    register: (email, username, password) =>
+      dispatch(registerUser(username, email, password)),
     toggle: () => dispatch(toggleAuthModal())
   };
 };
@@ -42,6 +45,11 @@ class AuthModal extends Component {
   login = form => {
     const { emailOrUsername, password } = form.getFieldsValue();
     this.props.login(emailOrUsername, password);
+  };
+
+  register = form => {
+    const { email, username, password } = form.getFieldsValue();
+    this.props.register(email, username, password);
   };
 
   render() {
@@ -79,7 +87,13 @@ class AuthModal extends Component {
           <Tabs.TabPane tab="LOG IN" key="login">
             <LoginForm onSubmit={this.login} loading={loading} error={error} />
           </Tabs.TabPane>
-          <Tabs.TabPane tab="SIGN UP" key="signup" />
+          <Tabs.TabPane tab="SIGN UP" key="signup">
+            <SignUpForm
+              onSubmit={this.register}
+              loading={loading}
+              error={error}
+            />
+          </Tabs.TabPane>
         </Tabs>
       </Modal>
     );
