@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { toggleAuthModal } from '../../../actions/auth-actions';
+import { logout, toggleAuthModal } from '../../../actions/auth-actions';
 import Nav from './nav';
 import Logo from './logo';
 import Title from './title';
 import ClickableText from './clickable-text';
 import Column from '../column';
+import UserDropdown from './user-dropdown';
 import AuthModal from '../modals/auth-modal';
 
 const mapStateToProps = state => {
@@ -17,14 +18,14 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    toggleModal: tab => dispatch(toggleAuthModal(tab))
+    toggleModal: tab => dispatch(toggleAuthModal(tab)),
+    logout: () => dispatch(logout())
   };
 };
 
 class NavBar extends Component {
   render() {
-    const { transparent, user, toggleModal, visible } = this.props;
-    console.log('props', this.props);
+    const { transparent, user, toggleModal, visible, logout } = this.props;
     return (
       <Nav transparent={transparent}>
         <Column>
@@ -34,10 +35,10 @@ class NavBar extends Component {
         <Column>
           <h2>
             {user && !user.isGuest ? (
-              user.username
+              <UserDropdown user={user} logout={logout} />
             ) : (
               <div>
-                <ClickableText onClick={() => toggleModal()}>
+                <ClickableText onClick={() => toggleModal('login')}>
                   login
                 </ClickableText>
                 <ClickableText onClick={() => toggleModal('signup')}>

@@ -20,6 +20,8 @@ export default function(state = initialState, action) {
         error: undefined,
         modalOpen: false
       };
+    case actions.LOGOUT:
+      return { ...state, user: undefined };
     case actions.AUTH_ERROR:
       return { ...state, loading: false, error: action.error };
     case actions.REGISTRATION_SUCCESS:

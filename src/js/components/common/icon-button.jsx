@@ -9,12 +9,13 @@ const RoundButton = styled.div`
   border-radius: 32px;
   cursor: pointer;
   text-transform: uppercase;
-  font-size: 14px;
+  font-size: 12px;
   ${props => (props.loading ? 'color: #c19f9f' : 'color: #eee')};
   ${props => (props.loading ? 'background: #9a201e' : 'background: #ef5350')};
-  padding: 4px 12px 4px 16px;
+  padding: 0px 12px 0px 16px;
   transition: background ease-in-out 150ms, color ease-in-out 150ms;
-  max-width: 135px;
+  width: 120px;
+  float: right;
 
   &:hover {
     color: #c19f9f;

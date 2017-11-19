@@ -1,9 +1,10 @@
-import ripple from '../services/ripple-api';
+import ripple, { logout as rippleLogout } from '../services/ripple-api';
 
 export const actions = {
   START_AUTH: 'START_AUTH',
   RECIEVE_USER: 'RECIEVE_USER',
   AUTH_ERROR: 'AUTH_ERROR',
+  LOGOUT: 'LOGOUT',
   REGISTRATION_SUCCESS: 'REGISTRATION_SUCCESS',
   TOGGLE_AUTH_MODAL: 'TOGGLE_AUTH_MODAL',
   SET_AUTH_MODAL_TAB: 'SET_AUTH_MODAL_TAB'
@@ -32,20 +33,6 @@ function authError(error) {
 function registrationSuccess() {
   return {
     type: actions.REGISTRATION_SUCCESS
-  };
-}
-
-function toggleModal(tab) {
-  return {
-    type: actions.TOGGLE_AUTH_MODAL,
-    tab
-  };
-}
-
-function setModalTab(tab) {
-  return {
-    type: actions.SET_AUTH_MODAL_TAB,
-    tab
   };
 }
 
@@ -80,6 +67,13 @@ export function login(emailOrUsername, password) {
   };
 }
 
+export function logout() {
+  rippleLogout();
+  return {
+    type: actions.LOGOUT
+  };
+}
+
 export function init() {
   return async dispatch => {
     try {
@@ -92,16 +86,18 @@ export function init() {
 }
 
 export function toggleAuthModal(tab = 'login') {
-  return dispatch => {
-    if (typeof tab !== 'string') {
-      tab = 'login';
-    }
-    dispatch(toggleModal(tab));
+  if (typeof tab !== 'string') {
+    tab = 'login';
+  }
+  return {
+    type: actions.TOGGLE_AUTH_MODAL,
+    tab
   };
 }
 
 export function setAuthModalTab(tab = 'login') {
-  return dispatch => {
-    dispatch(setModalTab(tab));
+  return {
+    type: actions.SET_AUTH_MODAL_TAB,
+    tab
   };
 }

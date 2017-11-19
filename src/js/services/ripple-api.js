@@ -16,4 +16,8 @@ ripple.onTokenUpdate((access, refresh) => {
   localStorage.setItem('tokens', JSON.stringify({ access, refresh }));
 });
 
+export const logout = () => {
+  localStorage.removeItem('tokens');
+};
+
 export default ripple;
