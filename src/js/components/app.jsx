@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route } from 'react-router-dom';
+import { withRouter, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { init } from '../actions/auth-actions';
 import Home from './home/home';
@@ -24,4 +24,4 @@ class App extends Component {
   }
 }
 
-export default connect(null, mapDispatchToProps)(App);
+export default withRouter(connect(null, mapDispatchToProps)(App));

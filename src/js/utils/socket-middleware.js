@@ -20,7 +20,7 @@ const socketMiddleware = () => {
         room.sendMessage(action.text);
         break;
       case roomActions.LEAVE_ROOM:
-        room.disconnect();
+        room.leave();
         return next(action);
       default:
         return next(action);

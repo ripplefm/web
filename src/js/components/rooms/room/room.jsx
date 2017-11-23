@@ -51,6 +51,7 @@ class Room extends Component {
   }
 
   componentWillUnmount() {
+    console.log('called');
     if (this.props.room) {
       this.props.leaveRoom();
     }

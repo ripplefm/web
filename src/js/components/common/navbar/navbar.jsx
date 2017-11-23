@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { logout, toggleAuthModal } from '../../../actions/auth-actions';
 import Nav from './nav';
 import Logo from './logo';
@@ -28,10 +29,12 @@ class NavBar extends Component {
     const { transparent, user, toggleModal, visible, logout } = this.props;
     return (
       <Nav className="navbar" transparent={transparent}>
-        <Column>
-          <Logo />
-          <Title>ripple.fm</Title>
-        </Column>
+        <Link to="/">
+          <Column>
+            <Logo />
+            <Title>ripple.fm</Title>
+          </Column>
+        </Link>
         <Column>
           <h2>
             {user && !user.isGuest ? (
