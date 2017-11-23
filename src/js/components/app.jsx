@@ -1,5 +1,27 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { withRouter, Route } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { init } from '../actions/auth-actions';
+import Home from './home/home';
+import Rooms from './rooms/rooms';
 
-const App = () => <div>App</div>;
+const mapDispatchToProps = dispatch => {
+  return {
+    init: () => dispatch(init())
+  };
+};
 
-export default App;
+class App extends Component {
+  componentDidMount() {
+    this.props.init();
+  }
+
+  render() {
+    return [
+      <Route key="home" path="/" exact component={Home} />,
+      <Route key="rooms" path="/rooms" component={Rooms} />
+    ];
+  }
+}
+
+export default withRouter(connect(null, mapDispatchToProps)(App));
