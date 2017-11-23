@@ -27,7 +27,7 @@ class NavBar extends Component {
   render() {
     const { transparent, user, toggleModal, visible, logout } = this.props;
     return (
-      <Nav transparent={transparent}>
+      <Nav className="navbar" transparent={transparent}>
         <Column>
           <Logo />
           <Title>ripple.fm</Title>

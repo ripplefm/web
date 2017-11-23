@@ -1,4 +1,4 @@
-import api from 'ripple.fm-js';
+import api from 'ripple.fm';
 
 const tokens = JSON.parse(localStorage.getItem('tokens'));
 let access, refresh;

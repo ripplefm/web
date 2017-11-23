@@ -14,7 +14,7 @@
     "react-scripts": "1.0.17",
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0",
-    "ripple.fm-js": "https://github.com/ripplefm/ripple.fm-js"
+    "ripple.fm": "0.0.5"
   },
   "scripts": {
     "start": "react-app-rewired start",
