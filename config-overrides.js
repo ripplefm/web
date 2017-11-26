@@ -18,6 +18,9 @@ module.exports = function override(config, env) {
       '@border-color-split': '#333',
       '@modal-mask-bg': 'rgba(0,0,0,0.5)',
       '@input-bg': '#111',
+      '@input-addon-bg': '#111',
+      '@background-color-base': '#19191b',
+      '@background-color-active': '#333',
       '@border-color-base': '#222'
     }
   })(config, env);
