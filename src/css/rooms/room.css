@@ -1,7 +1,3 @@
-.room-player {
-  background: #19191b;
-}
-
 .room {
   display: flex;
   flex-direction: column;

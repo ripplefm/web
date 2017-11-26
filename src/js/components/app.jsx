@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { init } from '../actions/auth-actions';
 import Home from './home/home';
 import Rooms from './rooms/rooms';
+import '../../css/common/common.css';
 
 const mapDispatchToProps = dispatch => {
   return {
