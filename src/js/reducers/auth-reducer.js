@@ -1,7 +1,8 @@
 import { actions } from '../actions/auth-actions';
 
+const user = JSON.parse(localStorage.getItem('user'));
 const initialState = {
-  user: undefined,
+  user: user === null ? undefined : user,
   loading: false,
   error: undefined,
   modalOpen: false,

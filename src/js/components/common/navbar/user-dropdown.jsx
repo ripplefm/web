@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'react-emotion';
-import { Menu, Dropdown, Icon } from 'antd';
+import { Avatar, Dropdown, Icon, Menu } from 'antd';
+import MutedText from '../muted-text';
 
 const Wrapper = styled.div`
   font-weight: 500;
@@ -16,15 +17,24 @@ const Wrapper = styled.div`
 
 const MenuWrapper = styled(Menu)`
   width: 200px;
+  margin-top: 12px;
   font-size: 16px;
   border: none;
   border-radius: 0.3rem;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+`;
+
+const UserInfo = styled.span`
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  line-height: 1.4;
+  margin-left: 16px;
 `;
 
 const DropdownMenu = ({ user, logout }) => (
   <MenuWrapper
-    mode="inline"
     selectable={false}
     onClick={({ key }) => {
       if (key === 'logout') {
@@ -32,6 +42,28 @@ const DropdownMenu = ({ user, logout }) => (
       }
     }}
   >
+    <Menu.Item
+      style={{
+        display: 'flex',
+        justifyContent: 'flex-start',
+        alignItems: 'center'
+      }}
+    >
+      <Avatar
+        style={{
+          background: 'linear-gradient(335deg, #e5cd5d, #ef5350)',
+          color: '#eee',
+          marginLeft: '-8px'
+        }}
+      >
+        {user.username.toUpperCase().charAt(0)}
+      </Avatar>
+      <UserInfo>
+        <span>{user.username}</span>
+        <MutedText fontSize="12">{user.email}</MutedText>
+      </UserInfo>
+    </Menu.Item>
+    <Menu.Divider />
     <Menu.Item>
       <Icon type="user" /> Profile
     </Menu.Item>
@@ -41,7 +73,6 @@ const DropdownMenu = ({ user, logout }) => (
     <Menu.Item>
       <Icon type="bars" /> Playlists
     </Menu.Item>
-    <Menu.Divider />
     <Menu.Item key="logout">
       <Icon type="logout" /> Log Out
     </Menu.Item>

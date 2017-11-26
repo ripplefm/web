@@ -12,12 +12,15 @@ const ripple = api.create({
   baseURL: 'http://localhost:3000/v1'
 });
 
-ripple.onTokenUpdate((access, refresh) => {
+ripple.onTokenUpdate(async (access, refresh) => {
   localStorage.setItem('tokens', JSON.stringify({ access, refresh }));
+  const user = await ripple.getCurrentUser();
+  localStorage.setItem('user', JSON.stringify(user));
 });
 
 export const logout = () => {
   localStorage.removeItem('tokens');
+  localStorage.removeItem('user');
 };
 
 export default ripple;
