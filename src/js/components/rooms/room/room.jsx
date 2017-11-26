@@ -1,24 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import styled from 'react-emotion';
 import { getRoom, joinRoom, leaveRoom } from '../../../actions/room-actions';
 import NavBar from '../../common/navbar/navbar';
-import SideBar from './sidebar';
+import RoomSidebar from './room-sidebar';
 import Chat from './room-chat';
+import Player from './player/room-player';
+import Search from './search/room-search';
 import '../../../../css/rooms/room.css';
-
-const Player = styled.div`
-  background: black;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex: 1;
-  max-height: 56.25vw;
-`;
-
-const Tabs = styled.div`
-  background: orange;
-`;
 
 const mapStateToProps = state => {
   return {
@@ -51,7 +39,6 @@ class Room extends Component {
   }
 
   componentWillUnmount() {
-    console.log('called');
     if (this.props.room) {
       this.props.leaveRoom();
     }
@@ -71,12 +58,9 @@ class Room extends Component {
     return (
       <div className="room">
         <NavBar />
-        <SideBar className="room-sidebar" />
-        <Player className="room-player">
-          <h3>No Track Playing</h3>
-        </Player>
+        <RoomSidebar room={room} />
+        <Player track={room ? room.currentTrack : undefined} />
         <Chat className="room-chat" />
-        <Tabs className="swipeable-tab-group">Tabs</Tabs>
       </div>
     );
   }

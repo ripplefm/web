@@ -1,6 +1,9 @@
 import { events } from 'ripple.fm';
 import ripple from '../services/ripple-api';
-import { actions as roomActions } from '../actions/room-actions';
+import {
+  recieveRoomTrack,
+  actions as roomActions
+} from '../actions/room-actions';
 import {
   recieveMessage,
   actions as chatActions
@@ -14,6 +17,9 @@ const socketMiddleware = () => {
         room = ripple.joinRoom(action.id);
         room.on(events.ROOM_CHAT_MESSAGE, message =>
           store.dispatch(recieveMessage(message))
+        );
+        room.on(events.ROOM_CURRENT_TRACK, track =>
+          store.dispatch(recieveRoomTrack(track))
         );
         break;
       case chatActions.SEND_CHAT_MESSAGE:

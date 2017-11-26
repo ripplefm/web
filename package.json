@@ -4,6 +4,7 @@
   "private": false,
   "dependencies": {
     "antd": "^2.13.10",
+    "axios": "^0.17.1",
     "emotion": "^8.0.10",
     "react": "^16.1.1",
     "react-dom": "^16.1.1",
@@ -12,6 +13,7 @@
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.0.17",
+    "react-youtube": "^7.5.0",
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0",
     "ripple.fm": "0.0.5"
