@@ -6,7 +6,8 @@ export const actions = {
   RECIEVE_ROOM: 'RECIEVE_ROOM',
   REQUEST_ROOM_ERROR: 'REQUEST_ROOM_ERROR',
   JOIN_ROOM: 'JOIN_ROOM',
-  LEAVE_ROOM: 'LEAVE_ROOM'
+  LEAVE_ROOM: 'LEAVE_ROOM',
+  RECIEVE_ROOM_TRACK: 'RECIEVE_ROOM_TRACK'
 };
 
 function requestRoom() {
@@ -37,6 +38,13 @@ export function getRoom(id) {
     } catch (err) {
       dispatch(requestRoomError(err));
     }
+  };
+}
+
+export function recieveRoomTrack(track) {
+  return {
+    type: actions.RECIEVE_ROOM_TRACK,
+    track
   };
 }
 

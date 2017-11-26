@@ -14,6 +14,8 @@ export default function(state = initialState, action) {
       return { ...state, loading: false, room: action.room };
     case actions.REQUEST_ROOM_ERROR:
       return { ...state, loading: false, error: action.error };
+    case actions.RECIEVE_ROOM_TRACK:
+      return { ...state, room: { ...state.room, currentTrack: action.track } };
     default:
       return state;
   }
