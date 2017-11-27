@@ -1,9 +1,9 @@
 import React from 'react';
-import NavBar from '../common/navbar/navbar';
+import Banner from './banner';
 
 const Home = () => (
   <div>
-    <NavBar transparent />
+    <Banner />
   </div>
 );
 
