@@ -26,13 +26,21 @@ const mapDispatchToProps = dispatch => {
 
 class NavBar extends Component {
   render() {
-    const { transparent, user, toggleModal, visible, logout } = this.props;
+    const {
+      padded,
+      transparent,
+      user,
+      toggleModal,
+      visible,
+      logout,
+      hideLogo
+    } = this.props;
     return (
-      <Nav className="navbar" transparent={transparent}>
+      <Nav className="navbar" padded={padded} transparent={transparent}>
         <Link to="/">
           <Column>
-            <Logo />
-            <Title>ripple.fm</Title>
+            {hideLogo ? null : <Logo />}
+            <Title fontSize="1.25rem">ripple.fm</Title>
           </Column>
         </Link>
         <Column>

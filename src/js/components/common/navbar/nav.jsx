@@ -8,4 +8,9 @@ export default styled.nav`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 0px ${props => (props.padded ? '15%' : '0px')};
+
+  @media (max-width: 768px) {
+    padding: 0px 8px;
+  }
 `;
