@@ -83,6 +83,7 @@ const UserDropdown = ({ user, logout }) => (
   <Dropdown
     overlay={<DropdownMenu user={user} logout={logout} />}
     trigger={['click']}
+    placement="bottomCenter"
   >
     <Wrapper>
       {user.username}{' '}
