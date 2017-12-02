@@ -1,0 +1,25 @@
+.room-snippet-modal {
+  text-align: center;
+  white-space: nowrap;
+}
+
+.room-snippet-modal:before {
+  content: '';
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+  width: 0px;
+}
+
+.room-snippet-modal .ant-modal {
+  display: inline-block;
+  vertical-align: middle;
+  top: 0px;
+  text-align: left;
+}
+
+@media (max-width: 768px) {
+  .room-snippet-modal .ant-modal {
+    width: 90% !important;
+  }
+}
