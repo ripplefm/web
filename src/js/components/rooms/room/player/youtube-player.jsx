@@ -6,7 +6,7 @@ export default class YouTubePlayer extends Component {
 
   render() {
     const { started } = this.state;
-    const { track } = this.props;
+    const { track, muted } = this.props;
     const start =
       track && track.timestamp
         ? Math.abs(track.timestamp - Date.now()) / 1000
@@ -36,7 +36,7 @@ export default class YouTubePlayer extends Component {
             }
           }}
           onReady={e => {
-            if (!started && window.innerWidth < 768) {
+            if (muted || (!started && window.innerWidth < 768)) {
               e.target.mute();
               this.setState({ started: true });
             }
@@ -48,7 +48,7 @@ export default class YouTubePlayer extends Component {
           }}
           onPause={e => {
             e.target.playVideo();
-            if (e.target.isMuted()) {
+            if (!muted && e.target.isMuted()) {
               e.target.setVolume(10);
               e.target.unMute();
             }
