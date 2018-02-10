@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Input } from 'antd';
-import { sendMessage } from '../../../actions/room-chat-actions';
+import { sendMessage } from '../../../../actions/station-chat-actions';
 import ChatMessage from './chat-message';
 
 const mapStateToProps = state => {
   return {
-    messages: state.roomChat.messages
+    messages: state.stationChat.messages
   };
 };
 
@@ -16,7 +16,7 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-class RoomChat extends Component {
+class Stationchat extends Component {
   sendMessage = e => {
     const { target } = e;
     e.preventDefault();
@@ -27,10 +27,10 @@ class RoomChat extends Component {
   render() {
     const { messages } = this.props;
     return (
-      <div className="room-chat">
+      <div className="station-chat">
         <ul style={{ width: '100%' }}>
           {messages.map(msg => (
-            <ChatMessage message={msg} key={msg.sender + msg.text} />
+            <ChatMessage message={msg} key={msg.sender.id + msg.text} />
           ))}
         </ul>
         <form onSubmit={this.sendMessage}>
@@ -41,4 +41,4 @@ class RoomChat extends Component {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(RoomChat);
+export default connect(mapStateToProps, mapDispatchToProps)(Stationchat);

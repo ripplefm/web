@@ -14,8 +14,8 @@ const renderPlayer = (track, muted) => (
   </ResponsivePlayerContainer>
 );
 
-const RoomPlayer = ({ track, muted }) => (
-  <div className="room-player">{renderPlayer(track, muted)}</div>
+const StationPlayer = ({ track, muted }) => (
+  <div className="station-player">{renderPlayer(track, muted)}</div>
 );
 
-export default RoomPlayer;
+export default StationPlayer;

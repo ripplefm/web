@@ -36,6 +36,7 @@ export default class YouTubePlayer extends Component {
             }
           }}
           onReady={e => {
+            e.target.setVolume(10);
             if (muted || (!started && window.innerWidth < 768)) {
               e.target.mute();
               this.setState({ started: true });

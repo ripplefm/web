@@ -1,40 +1,30 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { logout, toggleAuthModal } from '../../../actions/auth-actions';
+import { logout } from '../../../actions/oauth-actions';
 import Nav from './nav';
 import Logo from './logo';
 import Title from './title';
 import ClickableText from './clickable-text';
 import Column from '../column';
 import UserDropdown from './user-dropdown';
-import AuthModal from '../modals/auth-modal';
+import { getLoginUrl, getRegisterUrl } from '../../../utils/oauth-utils';
 
 const mapStateToProps = state => {
   return {
-    user: state.auth.user,
-    visible: state.auth.modalOpen
+    user: state.auth.user
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    toggleModal: tab => dispatch(toggleAuthModal(tab)),
     logout: () => dispatch(logout())
   };
 };
 
 class NavBar extends Component {
   render() {
-    const {
-      padded,
-      transparent,
-      user,
-      toggleModal,
-      visible,
-      logout,
-      hideLogo
-    } = this.props;
+    const { padded, transparent, user, logout, hideLogo } = this.props;
     return (
       <Nav className="navbar" padded={padded} transparent={transparent}>
         <Link to="/">
@@ -49,17 +39,12 @@ class NavBar extends Component {
               <UserDropdown user={user} logout={logout} />
             ) : (
               <div>
-                <ClickableText onClick={() => toggleModal('login')}>
-                  login
-                </ClickableText>
-                <ClickableText onClick={() => toggleModal('signup')}>
-                  sign up
-                </ClickableText>
+                <a href={getLoginUrl()}>Log In</a>
+                <a href={getRegisterUrl()}>Sign Up</a>
               </div>
             )}
           </h2>
         </Column>
-        <AuthModal visible={visible} onCancel={toggleModal} />
       </Nav>
     );
   }

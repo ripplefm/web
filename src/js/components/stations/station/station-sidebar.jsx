@@ -1,18 +1,18 @@
 import React, { Component } from 'react';
 import { Tabs } from 'antd';
-import Search from './search/room-search';
+import Search from './search/station-search';
 import Sidebar, { SidebarCover } from '../../common/sidebar/sidebar';
 import SidebarTab from '../../common/sidebar/sidebar-tab';
-import '../../../../css/rooms/room-sidebar.css';
+import '../../../../css/station/station-sidebar.css';
 
-export default class RoomSidebar extends Component {
+export default class StationSidebar extends Component {
   state = { open: false, openedOnce: false };
 
   render() {
     const { open, openedOnce } = this.state;
-    const { room } = this.props;
+    const { station } = this.props;
     return (
-      <Sidebar className="room-sidebar" open={open}>
+      <Sidebar className="station-sidebar" open={open}>
         <Tabs
           animated={false}
           tabPosition="right"
@@ -28,7 +28,7 @@ export default class RoomSidebar extends Component {
                 open={open}
                 name="search"
                 icon="search"
-                sidebarSelector=".room-sidebar"
+                sidebarSelector=".station-sidebar"
               />
             }
           >
@@ -47,7 +47,7 @@ export default class RoomSidebar extends Component {
                 open={open}
                 name="history"
                 icon="clock-circle-o"
-                sidebarSelector=".room-sidebar"
+                sidebarSelector=".station-sidebar"
               />
             }
           >

@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { withRouter, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { init } from '../actions/auth-actions';
+import { init } from '../actions/oauth-actions';
 import Home from './home/home';
-import Rooms from './rooms/rooms';
+import Stations from './stations/stations';
 import '../../css/common/common.css';
 
 const mapDispatchToProps = dispatch => {
@@ -20,7 +20,7 @@ class App extends Component {
   render() {
     return [
       <Route key="home" path="/" exact component={Home} />,
-      <Route key="rooms" path="/rooms" component={Rooms} />
+      <Route key="stations" path="/stations" component={Stations} />
     ];
   }
 }

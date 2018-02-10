@@ -1,26 +1,44 @@
 import api from 'ripple.fm';
+import {
+  parseHash,
+  getAuthorizeUrl,
+  updateAccessToken
+} from '../utils/oauth-utils';
 
-const tokens = JSON.parse(localStorage.getItem('tokens'));
-let access, refresh;
-if (tokens !== null) {
-  access = tokens.access;
-  refresh = tokens.refresh;
+if (window.parent === window) {
+  updateAccessToken(window.location.hash)
+    .then(() => {})
+    .catch(() => {});
 }
+const token = localStorage.getItem('access_token');
 const ripple = api.create({
-  access,
-  refresh,
-  baseURL: 'http://localhost:3000/v1'
+  access: token === null ? undefined : token,
+  baseURL: 'http://localhost:4000',
+  onAccessTokenExpire: refreshImplicitToken
 });
 
-ripple.onTokenUpdate(async (access, refresh) => {
-  localStorage.setItem('tokens', JSON.stringify({ access, refresh }));
-  const user = await ripple.getCurrentUser();
-  localStorage.setItem('user', JSON.stringify(user));
-});
+export const refreshImplicitToken = () =>
+  new Promise((resolve, reject) => {
+    const iframe = document.createElement('iframe');
+    iframe.style.display = 'none';
+    iframe.src = getAuthorizeUrl();
+    iframe.onload = () => {
+      try {
+        const { hash } = iframe.contentWindow.location;
+        iframe.parentNode.removeChild(iframe);
+        updateAccessToken(hash)
+          .then(token => resolve(token))
+          .catch(() => reject());
+      } catch (err) {
+        reject();
+      }
+    };
+    document.body.appendChild(iframe);
+  });
 
 export const logout = () => {
-  localStorage.removeItem('tokens');
   localStorage.removeItem('user');
+  localStorage.removeItem('access_token');
 };
 
 export default ripple;

@@ -1,11 +1,11 @@
 import React from 'react';
 import Banner from './banner';
-import RoomSnippetList from './room-snippet-list';
+import StationSnippetList from './station-snippet-list';
 
 const Home = () => (
   <div style={{ overflow: 'hidden' }}>
     <Banner />
-    <RoomSnippetList />
+    <StationSnippetList />
   </div>
 );
 

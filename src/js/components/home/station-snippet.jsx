@@ -1,11 +1,10 @@
 import React from 'react';
 import styled from 'react-emotion';
 import { Card, Icon } from 'antd';
-import Player from '../rooms/room/player/room-player';
-import ripple from '../../services/ripple-api';
+import Player from '../stations/station/player/station-player';
 import { FadeOut } from '../common/animations/fade';
 
-export const RoomCard = styled(Card)`
+export const StationCard = styled(Card)`
   position: relative;
   ${props => (props.expanded ? 'width: 100%' : '')};
   ${props => (props.expanded ? 'height: 100%' : '')};
@@ -79,25 +78,25 @@ const Artwork = styled.img`
   }
 `;
 
-const RoomSnippet = ({
-  room,
+const StationSnippet = ({
+  station,
   expanded,
   loading,
   onClick,
   onFollow,
   onJoin
 }) => (
-  <RoomCard
+  <StationCard
     bordered={false}
     loading={loading}
     bodyStyle={{ padding: '0px' }}
     onClick={onClick}
     expanded={expanded}
   >
-    {room && room.currentTrack ? (
+    {station && station.current_track ? (
       <span>
-        <Artwork expanded={expanded} src={room.currentTrack.artworkUrl} />
-        {expanded ? <Player track={room.currentTrack} muted /> : null}
+        <Artwork expanded={expanded} src={station.current_track.artwork_url} />
+        {expanded ? <Player track={station.current_track} muted /> : null}
       </span>
     ) : (
       <ArtworkGradient expanded={expanded}>No Artwork</ArtworkGradient>
@@ -115,17 +114,10 @@ const RoomSnippet = ({
         borderBottom: '1px solid #111'
       }}
     >
-      <h3>{room ? room.name : ''}</h3>
+      <h3>{station ? station.name : ''}</h3>
       <h3>
         <Icon style={{ color: 'rgba(256, 256, 256, 0.3)' }} type="user" />{' '}
-        {room.creator ? room.creator.username : ''}
-      </h3>
-      <h3>
-        <Icon
-          style={{ color: 'rgba(256, 256, 256, 0.3)' }}
-          type="environment-o"
-        />{' '}
-        {room.city ? room.city : ''}
+        {station.creator ? station.creator.username : ''}
       </h3>
     </div>
     <div
@@ -168,7 +160,7 @@ const RoomSnippet = ({
             marginTop: '2px'
           }}
         >
-          {room.followers}
+          {station.followers ? station.followers : 0}
         </span>
       </div>
       <div
@@ -203,11 +195,11 @@ const RoomSnippet = ({
             marginTop: '2px'
           }}
         >
-          {room.numUsers}
+          {station.total_listeners}
         </span>
       </div>
     </div>
-  </RoomCard>
+  </StationCard>
 );
 
-export default RoomSnippet;
+export default StationSnippet;
