@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { withRouter, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { init } from '../actions/auth-actions';
+import { init } from '../actions/oauth-actions';
 import Home from './home/home';
 import Rooms from './rooms/rooms';
 import '../../css/common/common.css';
