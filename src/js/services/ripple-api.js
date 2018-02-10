@@ -33,6 +33,7 @@ export const refreshImplicitToken = () =>
         reject();
       }
     };
+    document.body.appendChild(iframe);
   });
 
 export const logout = () => {

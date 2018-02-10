@@ -28,9 +28,13 @@ export function init() {
       const user = await ripple.getCurrentUser();
       dispatch(receiveUser(user));
     } catch (e) {
-      refreshImplicitToken()
-        .then(() => {})
-        .catch(err => dispatch(authError()));
+      if (localStorage.getItem('user')) {
+        refreshImplicitToken()
+          .then(() => {})
+          .catch(err => dispatch(authError()));
+      } else {
+        dispatch(authError());
+      }
     }
   };
 }
