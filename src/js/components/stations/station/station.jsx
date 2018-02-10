@@ -77,7 +77,7 @@ class Station extends Component {
       <div className="station">
         <NavBar />
         <StationSidebar station={station} />
-        <Player track={station.current_track} />
+        <Player track={station ? station.current_track : undefined} />
         <Chat />
       </div>
     );
