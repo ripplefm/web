@@ -33,13 +33,21 @@ export const SidebarCover = styled.div`
   display: ${props => (props.openedOnce ? 'block' : 'none')};
   position: fixed;
   top: ${props => (props.open ? '-48px' : '-100vh')};
-  left: ${window.innerWidth <= 1650 ? '30vw' : '20vw'};
+  left: 20vw;
   width: 100vw;
   height: 100vh;
   background: rgba(0, 0, 0, 0.6);
   z-index: 1;
   animation: ${props => (props.open ? FadeIn : FadeOut)} 250ms ease-in-out;
   animation-fill-mode: ${props => (props.open ? 'backwards' : 'forwards')};
+
+  @media (max-width: 1650px) {
+    left: 30vw;
+  }
+
+  @media (max-width: 992px) {
+    display: none;
+  }
 `;
 
 export default Sidebar;

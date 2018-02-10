@@ -1,4 +1,4 @@
-.room-sidebar .ant-tabs-vertical .ant-tabs-tab {
+.station-sidebar .ant-tabs-vertical .ant-tabs-tab {
   width: 55px;
   height: 55px;
   background: #212121;
@@ -13,15 +13,15 @@
     border-right ease-in-out 150ms;
 }
 
-.room-sidebar .ant-tabs-tab.ant-tabs-tab-active {
+.station-sidebar .ant-tabs-tab.ant-tabs-tab-active {
   border-right: none;
 }
 
-.room-sidebar .ant-tabs-ink-bar {
+.station-sidebar .ant-tabs-ink-bar {
   display: none !important;
 }
 
-.room-sidebar .ant-tabs-vertical .ant-tabs-bar,
-.room-sidebar .ant-tabs-vertical .ant-tabs-content {
+.station-sidebar .ant-tabs-vertical .ant-tabs-bar,
+.station-sidebar .ant-tabs-vertical .ant-tabs-content {
   border: none;
 }

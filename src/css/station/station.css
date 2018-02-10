@@ -1,4 +1,4 @@
-.room {
+.station {
   display: flex;
   flex-direction: column;
   align-items: stretch;
@@ -11,7 +11,7 @@
 
 @supports not (display: grid) {
   @media (min-width: 992px) {
-    .room {
+    .station {
       position: relative;
       padding-right: 30%;
       flex-direction: row;
@@ -19,12 +19,12 @@
       align-content: flex-start;
     }
 
-    .room .navbar {
+    .station .navbar {
       min-width: 100vw;
       width: 100vw;
     }
 
-    .room-player {
+    .station-player {
       width: 100%;
       height: calc(70vw * 9 / 16);
     }
@@ -34,7 +34,7 @@
       height: calc(100vh - 48px - (70vw * 9 / 16));
     }
 
-    .room-chat {
+    .station-chat {
       position: absolute;
       left: 70%;
       top: 48px;
@@ -44,21 +44,21 @@
   }
 
   @media (min-width: 1200px) {
-    .room {
+    .station {
       padding-right: 350px;
       padding-left: 55px;
     }
 
-    .room-player {
+    .station-player {
       width: 100%;
       height: calc((100vw - 405px) * 9 / 16);
     }
 
-    .room-chat {
+    .station-chat {
       left: calc(100vw - 350px);
     }
 
-    .room .navbar {
+    .station .navbar {
       margin-left: -55px;
     }
   }
@@ -66,18 +66,18 @@
 
 @supports (display: grid) {
   @media (min-width: 992px) {
-    .room {
+    .station {
       display: grid;
       grid-template-columns: auto 30vw;
       grid-template-rows: 48px calc(70vw * 9 / 16) auto;
       grid-template-areas: 'nav nav' 'player chat' 'tabs chat';
     }
 
-    .room .navbar {
+    .station .navbar {
       grid-area: nav;
     }
 
-    .room-player {
+    .station-player {
       grid-area: player;
     }
 
@@ -85,7 +85,7 @@
       grid-area: tabs;
     }
 
-    .room-chat {
+    .station-chat {
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
@@ -95,27 +95,27 @@
   }
 
   @media (min-width: 1200px) {
-    .room {
+    .station {
       display: grid;
       grid-template-columns: 55px auto 350px;
       grid-template-rows: 48px auto;
       grid-template-areas: 'nav nav nav' 'sidebar player chat';
     }
 
-    .room .navbar {
+    .station .navbar {
       grid-area: nav;
     }
 
-    .room-sidebar {
+    .station-sidebar {
       display: block;
       grid-area: sidebar;
     }
 
-    .room-player {
+    .station-player {
       grid-area: player;
     }
 
-    .room-chat {
+    .station-chat {
       grid-area: chat;
     }
   }

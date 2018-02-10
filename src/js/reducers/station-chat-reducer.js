@@ -1,11 +1,11 @@
-import { actions } from '../actions/room-chat-actions';
+import { actions } from '../actions/station-chat-actions';
 
 export default function(state = { messages: [] }, action) {
   switch (action.type) {
-    case actions.RECIEVE_CHAT_MESSAGE:
+    case actions.RECEIVE_CHAT_MESSAGE:
       const messages = [...state.messages];
       const last = messages.pop();
-      if (last && last.sender === action.message.sender) {
+      if (last && last.sender.id === action.message.sender.id) {
         return {
           ...state,
           messages: [

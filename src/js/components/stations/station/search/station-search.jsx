@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Form, Input, Select } from 'antd';
-import SearchContainer from './room-search-container';
-import SearchResultsContainer from './room-search-results-container';
+import SearchContainer from './station-search-container';
+import SearchResultsContainer from './station-search-results-container';
 import SearchResult from './search-result';
 import { setProvider, search } from '../../../../actions/search-actions';
-import { addTrackToQueue } from '../../../../actions/room-queue-actions';
+import { addTrackToQueue } from '../../../../actions/station-queue-actions';
 
 const mapStateToProps = state => {
   return {

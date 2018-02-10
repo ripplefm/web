@@ -1,32 +1,55 @@
-import { events } from 'ripple.fm';
 import ripple from '../services/ripple-api';
 import {
-  recieveRoomTrack,
-  actions as roomActions
-} from '../actions/room-actions';
+  joinedStation,
+  requestJoinStationFailed,
+  actions as stationActions
+} from '../actions/station-actions';
 import {
-  recieveMessage,
+  receiveMessage,
   actions as chatActions
-} from '../actions/room-chat-actions';
+} from '../actions/station-chat-actions';
+import {
+  receiveTrack,
+  receiveQueueTrack,
+  actions as queueActions
+} from '../actions/station-queue-actions';
 
 const socketMiddleware = () => {
-  let room;
+  let station;
   return store => next => action => {
     switch (action.type) {
-      case roomActions.JOIN_ROOM:
-        room = ripple.joinRoom(action.id);
-        room.on(events.ROOM_CHAT_MESSAGE, message =>
-          store.dispatch(recieveMessage(message))
-        );
-        room.on(events.ROOM_CURRENT_TRACK, track =>
-          store.dispatch(recieveRoomTrack(track))
-        );
+      case stationActions.REQUEST_JOIN_STATION:
+        if (station == undefined) {
+          ripple
+            .joinStation(action.slug)
+            .then(s => {
+              station = s;
+              store.dispatch(joinedStation());
+              station.on('station_chat', data =>
+                store.dispatch(receiveMessage(data))
+              );
+              station.on('station_track_started', data =>
+                store.dispatch(receiveTrack(data.current_track))
+              );
+              station.on('station_track_finished', data =>
+                store.dispatch(receiveTrack(null))
+              );
+              station.on('station_queue_track_added', data => {
+                store.dispatch(receiveQueueTrack(data));
+              });
+            })
+            .catch(err => store.dispatch(requestJoinStationFailed(err)));
+        }
         break;
       case chatActions.SEND_CHAT_MESSAGE:
-        room.sendMessage(action.text);
+        station.push('chat', { text: action.text });
         break;
-      case roomActions.LEAVE_ROOM:
-        room.leave();
+      case queueActions.ADD_TRACK_TO_QUEUE:
+        station.push('track', { track_url: action.track.url });
+        break;
+      case stationActions.LEAVE_STATION:
+        // station.leave();
+        station = undefined;
         return next(action);
       default:
         return next(action);
