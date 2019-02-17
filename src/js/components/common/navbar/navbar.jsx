@@ -5,7 +5,6 @@ import { logout } from '../../../actions/oauth-actions';
 import Nav from './nav';
 import Logo from './logo';
 import Title from './title';
-import ClickableText from './clickable-text';
 import Column from '../column';
 import UserDropdown from './user-dropdown';
 import { getLoginUrl, getRegisterUrl } from '../../../utils/oauth-utils';
@@ -23,7 +22,16 @@ const mapDispatchToProps = dispatch => {
 };
 
 class NavBar extends Component {
+  state = { loginUrl: '', registerUrl: '' };
+
+  async componentDidMount() {
+    const loginUrl = await getLoginUrl();
+    const registerUrl = await getRegisterUrl();
+    this.setState({ loginUrl, registerUrl });
+  }
+
   render() {
+    const { loginUrl, registerUrl } = this.state;
     const { padded, transparent, user, logout, hideLogo } = this.props;
     return (
       <Nav className="navbar" padded={padded} transparent={transparent}>
@@ -39,8 +47,8 @@ class NavBar extends Component {
               <UserDropdown user={user} logout={logout} />
             ) : (
               <div>
-                <a href={getLoginUrl()}>Log In</a>
-                <a href={getRegisterUrl()}>Sign Up</a>
+                <a href={loginUrl}>Log In</a>
+                <a href={registerUrl}>Sign Up</a>
               </div>
             )}
           </h2>
@@ -50,4 +58,7 @@ class NavBar extends Component {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(NavBar);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(NavBar);

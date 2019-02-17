@@ -1,27 +1,17 @@
 import api from 'ripple.fm';
-import {
-  parseHash,
-  getAuthorizeUrl,
-  updateAccessToken
-} from '../utils/oauth-utils';
+import { getAuthorizeUrl, updateAccessToken } from '../utils/oauth-utils';
 
 if (window.parent === window) {
   updateAccessToken(window.location.hash)
     .then(() => {})
     .catch(() => {});
 }
-const token = localStorage.getItem('access_token');
-const ripple = api.create({
-  access: token === null ? undefined : token,
-  baseURL: 'http://localhost:4000',
-  onAccessTokenExpire: refreshImplicitToken
-});
 
 export const refreshImplicitToken = () =>
-  new Promise((resolve, reject) => {
+  new Promise(async (resolve, reject) => {
     const iframe = document.createElement('iframe');
     iframe.style.display = 'none';
-    iframe.src = getAuthorizeUrl();
+    iframe.src = await getAuthorizeUrl();
     iframe.onload = () => {
       try {
         const { hash } = iframe.contentWindow.location;
@@ -35,6 +25,14 @@ export const refreshImplicitToken = () =>
     };
     document.body.appendChild(iframe);
   });
+
+const token = localStorage.getItem('access_token');
+const ripple = api.create({
+  access: token === null ? undefined : token,
+  baseURL: process.env.REACT_APP_CORE_API_URL,
+  authURL: process.env.REACT_APP_AUTH_URL,
+  onAccessTokenExpire: refreshImplicitToken
+});
 
 export const logout = () => {
   localStorage.removeItem('user');

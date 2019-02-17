@@ -1,6 +1,9 @@
 {
   "name": "web",
   "version": "0.1.0",
+  "author": "Daniel Rudnitski <danielrudn@gmail.com>",
+  "license": "MIT",
+  "main": "src",
   "private": false,
   "dependencies": {
     "antd": "^2.13.10",
@@ -16,7 +19,7 @@
     "react-youtube": "^7.5.0",
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0",
-    "ripple.fm": "github:ripplefm/ripple.fm-js#stations-dev"
+    "ripple.fm": "^0.1.1"
   },
   "scripts": {
     "start": "react-app-rewired start",
@@ -28,7 +31,7 @@
     "babel-plugin-emotion": "^8.0.10",
     "babel-plugin-import": "^1.6.2",
     "prettier": "^1.8.2",
-    "react-app-rewire-less": "^2.1.0",
+    "react-app-rewire-less": "2.1.1",
     "react-app-rewired": "^1.3.5"
   }
 }

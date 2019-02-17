@@ -1,5 +1,5 @@
 import ripple from '../services/ripple-api';
-const { REACT_APP_OAUTH_URL, REACT_APP_CLIENT_ID } = process.env;
+const { REACT_APP_AUTH_URL, REACT_APP_CLIENT_NAME } = process.env;
 
 function updateUser() {
   setTimeout(async () => {
@@ -10,7 +10,7 @@ function updateUser() {
   }, 0);
 }
 
-export const parseHash = hash => {
+const parseHash = hash => {
   return hash
     .substring(1)
     .split('&')
@@ -19,6 +19,15 @@ export const parseHash = hash => {
       a[b[0]] = b[1];
       return a;
     }, {});
+};
+
+let clientId = null;
+const getOAuthClientId = async () => {
+  if (clientId === null || clientId === undefined) {
+    const client = await ripple.getClient(REACT_APP_CLIENT_NAME);
+    clientId = client.id;
+  }
+  return clientId;
 };
 
 export const updateAccessToken = hash =>
@@ -34,24 +43,24 @@ export const updateAccessToken = hash =>
     }
   });
 
-export const getAuthorizeUrl = () => {
-  return `${REACT_APP_OAUTH_URL}/oauth2/authorize?client_id=${
-    REACT_APP_CLIENT_ID
-  }&redirect_uri=${'http://localhost:3001'}&response_type=token&scope=user:email:read playlists:write stations:write`;
+export const getAuthorizeUrl = async () => {
+  return `${REACT_APP_AUTH_URL}/oauth2/authorize?client_id=${await getOAuthClientId()}&redirect_uri=${
+    window.location.origin
+  }&response_type=token&scope=user:email:read playlists:write stations:write`;
 };
 
-export const getLoginUrl = () => {
-  return `${REACT_APP_OAUTH_URL}/login?next=${encodeURIComponent(
-    `/oauth2/authorize?client_id=${
-      REACT_APP_CLIENT_ID
-    }&redirect_uri=${'http://localhost:3001'}&response_type=token&scope=user:email:read playlists:write stations:write`
+export const getLoginUrl = async () => {
+  return `${REACT_APP_AUTH_URL}/login?next=${encodeURIComponent(
+    `/oauth2/authorize?client_id=${await getOAuthClientId()}&redirect_uri=${
+      window.location.origin
+    }&response_type=token&scope=user:email:read playlists:write stations:write`
   )}`;
 };
 
-export const getRegisterUrl = () => {
-  return `${REACT_APP_OAUTH_URL}/register?next=${encodeURIComponent(
-    `/oauth2/authorize?client_id=${
-      REACT_APP_CLIENT_ID
-    }&redirect_uri=${'http://localhost:3001'}&response_type=token&scope=user:email:read playlists:write stations:write`
+export const getRegisterUrl = async () => {
+  return `${REACT_APP_AUTH_URL}/register?next=${encodeURIComponent(
+    `/oauth2/authorize?client_id=${await getOAuthClientId()}&redirect_uri=${
+      window.location.origin
+    }&response_type=token&scope=user:email:read playlists:write stations:write`
   )}`;
 };
