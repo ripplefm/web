@@ -1,5 +1,3 @@
-import ripple from '../services/ripple-api';
-
 export const actions = {
   ADD_TRACK_TO_QUEUE: 'ADD_TRACK_TO_QUEUE',
   RECEIVE_TRACK: 'RECEIVE_TRACK',

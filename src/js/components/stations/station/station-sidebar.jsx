@@ -10,7 +10,6 @@ export default class StationSidebar extends Component {
 
   render() {
     const { open, openedOnce } = this.state;
-    const { station } = this.props;
     return (
       <Sidebar className="station-sidebar" open={open}>
         <Tabs

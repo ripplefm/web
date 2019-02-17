@@ -1,11 +1,15 @@
 {
   "name": "web",
   "version": "0.1.0",
+  "author": "Daniel Rudnitski <danielrudn@gmail.com>",
+  "license": "MIT",
+  "main": "src",
   "private": false,
   "dependencies": {
     "antd": "^2.13.10",
     "axios": "^0.17.1",
     "emotion": "^8.0.10",
+    "http-server": "^0.11.1",
     "react": "^16.1.1",
     "react-dom": "^16.1.1",
     "react-emotion": "^8.0.10",
@@ -16,19 +20,21 @@
     "react-youtube": "^7.5.0",
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0",
-    "ripple.fm": "github:ripplefm/ripple.fm-js#stations-dev"
+    "ripple.fm": "^0.1.1"
   },
   "scripts": {
     "start": "react-app-rewired start",
     "build": "react-app-rewired build",
     "test": "react-app-rewired test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "prettier --debug-check \"src/**/*.js*\"",
+    "prod": "yarn build && http-server ./build --gzip"
   },
   "devDependencies": {
     "babel-plugin-emotion": "^8.0.10",
     "babel-plugin-import": "^1.6.2",
     "prettier": "^1.8.2",
-    "react-app-rewire-less": "^2.1.0",
+    "react-app-rewire-less": "2.1.1",
     "react-app-rewired": "^1.3.5"
   }
 }

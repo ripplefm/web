@@ -14,6 +14,7 @@ class YouTubeService {
   }
 
   parseDuration(duration) {
+    // eslint-disable-next-line
     return eval(
       duration
         .substring(2)
@@ -27,20 +28,14 @@ class YouTubeService {
   async search(query) {
     const tracks = [];
     const res = await axios.get(
-      `https://content.googleapis.com/youtube/v3/search?q=${
-        query
-      }&maxResults=25&part=snippet&type=video&videoEmbeddable=true&key=${
-        API_KEY
-      }`
+      `https://content.googleapis.com/youtube/v3/search?q=${query}&maxResults=25&part=snippet&type=video&videoEmbeddable=true&key=${API_KEY}`
     );
     res.data.items.forEach(track => {
       tracks.push(this.parseTrack(track));
     });
     const idList = res.data.items.reduce((a, b) => a + b.id.videoId + ',', '');
     const detailRes = await axios.get(
-      `https://content.googleapis.com/youtube/v3/videos?id=${
-        idList
-      }&part=contentDetails&key=${API_KEY}`
+      `https://content.googleapis.com/youtube/v3/videos?id=${idList}&part=contentDetails&key=${API_KEY}`
     );
     detailRes.data.items.forEach((track, index) => {
       tracks[index].duration = this.parseDuration(

@@ -1,4 +1,4 @@
-import styled, { keyframes } from 'react-emotion';
+import styled from 'react-emotion';
 import { FadeIn, FadeOut } from '../animations/fade';
 
 const Sidebar = styled.div`
