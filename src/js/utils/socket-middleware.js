@@ -19,7 +19,7 @@ const socketMiddleware = () => {
   return store => next => action => {
     switch (action.type) {
       case stationActions.REQUEST_JOIN_STATION:
-        if (station == undefined) {
+        if (station === undefined) {
           ripple
             .joinStation(action.slug)
             .then(s => {
