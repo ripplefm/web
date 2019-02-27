@@ -7,4 +7,4 @@ const Logo = styled.img`
   margin: 4px 8px 0px 8px;
 `;
 
-export default props => <Logo src="/test.png" {...props} />;
+export default props => <Logo src="/images/logo.png" {...props} />;

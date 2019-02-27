@@ -33,7 +33,7 @@ const Room = styled.div`
 export default () => (
   <Room>
     <FakeNav>
-      <img src="/test.png" alt="ripple.fm logo" />
+      <img src="/images/logo.png" alt="ripple.fm logo" />
       <h5>ripple.fm</h5>
     </FakeNav>
     <FakeSidebar>
