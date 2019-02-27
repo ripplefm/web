@@ -1,6 +1,6 @@
 {
   "name": "web",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": "Daniel Rudnitski <danielrudn@gmail.com>",
   "license": "MIT",
   "main": "src",
@@ -20,7 +20,7 @@
     "react-youtube": "^7.5.0",
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0",
-    "ripple.fm": "^0.1.1"
+    "ripple.fm": "^0.1.2"
   },
   "scripts": {
     "start": "react-app-rewired start",

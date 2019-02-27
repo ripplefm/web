@@ -6932,9 +6932,9 @@ ripemd160@^2.0.0, ripemd160@^2.0.1:
     hash-base "^3.0.0"
     inherits "^2.0.1"
 
-ripple.fm@^0.1.1:
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/ripple.fm/-/ripple.fm-0.1.1.tgz#0322de3d9661cdf6404c3d4827ea614d80bea24d"
+ripple.fm@^0.1.2:
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/ripple.fm/-/ripple.fm-0.1.2.tgz#841dc3d606106e466ff8fee4799485f866ff09ec"
   dependencies:
     "@babel/polyfill" "^7.0.0"
     axios "^0.18.0"
