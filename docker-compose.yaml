@@ -1,0 +1,147 @@
+version: '3'
+networks:
+  proxy:
+    external: false
+  internal:
+    external: false
+services:
+  traefik:
+    image: traefik:1.3.6-alpine
+    command: --docker
+    ports:
+      - 3000:80
+    labels:
+      - traefik.port=8080
+      - traefik.frontend.rule=Host:traefik.localhost
+    volumes:
+      - '/var/run/docker.sock:/var/run/docker.sock'
+    networks:
+      - internal
+      - proxy
+  auth_postgres:
+    image: postgres:9.6
+    environment:
+      - 'POSTGRES_DB=ripple_auth'
+      - 'POSTGRES_PASSWORD=secret'
+    networks:
+      - internal
+  auth_redis:
+    image: redis
+    networks:
+      - internal
+  auth:
+    image: ripplefm/auth:0.1.3
+    labels:
+      - traefik.backend=auth
+      - traefik.frontend.rule=Host:accounts.localhost
+      - traefik.port=3000
+      - traefik.enable=true
+    links:
+      - auth_postgres
+      - auth_redis
+    networks:
+      - internal
+      - proxy
+    volumes:
+      - './support/public_key.pem:/etc/config/public_key.pem'
+      - './support/private_key.pem:/etc/config/private_key.pem'
+    environment:
+      - 'COOKIE_SECRET=secret'
+      - 'REDIS_HOST=auth_redis'
+      - 'POSTGRES_HOST=auth_postgres'
+      - 'POSTGRES_USERNAME=postgres'
+      - 'POSTGRES_PASSWORD=secret'
+      - 'POSTGRES_DATABASE=ripple_auth'
+      - 'PUBLIC_DOMAIN=http://localhost:3000'
+      - 'PUBLIC_KEY_LOCATION=/etc/config/public_key.pem'
+      - 'PRIVATE_KEY_LOCATION=/etc/config/private_key.pem'
+      - 'MAILGUN_API_KEY= '
+      - 'MAILGUN_API_DOMAIN= '
+  oauth2-creator:
+    image: ripplefm/auth:0.1.3
+    command:
+      [
+        'node',
+        'dist/cli',
+        'createOAuth2Client',
+        'ripple.fm',
+        'http://localhost:3000',
+        '-t',
+      ]
+    links:
+      - auth_postgres
+      - auth_redis
+    networks:
+      - internal
+    volumes:
+      - './support/public_key.pem:/etc/config/public_key.pem'
+      - './support/private_key.pem:/etc/config/private_key.pem'
+    environment:
+      - 'COOKIE_SECRET=secret'
+      - 'REDIS_HOST=auth_redis'
+      - 'POSTGRES_HOST=auth_postgres'
+      - 'POSTGRES_USERNAME=postgres'
+      - 'POSTGRES_PASSWORD=secret'
+      - 'POSTGRES_DATABASE=ripple_auth'
+      - 'PUBLIC_DOMAIN=http://localhost:3000'
+      - 'PUBLIC_KEY_LOCATION=/etc/config/public_key.pem'
+      - 'PRIVATE_KEY_LOCATION=/etc/config/private_key.pem'
+      - 'MAILGUN_API_KEY= '
+      - 'MAILGUN_API_DOMAIN= '
+  api_postgres:
+    image: postgres:9.6
+    environment:
+      - 'POSTGRES_DB=ripple_api'
+      - 'POSTGRES_PASSWORD=secret'
+    networks:
+      - internal
+  api:
+    image: ripplefm/core-api:0.1.11
+    command: bash -c "sleep 15; bin/ripple migrate && bin/ripple seed; bin/ripple foreground"
+    restart: always
+    links:
+      - api_postgres
+    networks:
+      - internal
+      - proxy
+    volumes:
+      - './support/public_key.pem:/etc/config/public_key.pem'
+      - './support/station_templates.exs:/opt/app/lib/ripple-0.1.11/priv/repo/seeds/station_templates.exs'
+    labels:
+      - traefik.backend=api
+      - traefik.frontend.rule=Host:api.localhost
+      - traefik.port=4000
+      - traefik.enable=true
+    environment:
+      - 'PORT=4000'
+      - 'REPLACE_OS_VARS=true'
+      - 'MIX_ENV=prod'
+      - 'MY_POD_IP=127.0.0.1'
+      - 'DB_NAME=ripple_api'
+      - 'DB_HOSTNAME=api_postgres'
+      - 'DB_USERNAME=postgres'
+      - 'DB_PASSWORD=secret'
+      - 'PUBLIC_KEY_LOCATION=/etc/config/public_key.pem'
+      - 'YOUTUBE_API_KEY=${REACT_APP_YOUTUBE_KEY}'
+      - 'SOUNDCLOUD_API_KEY=${REACT_APP_SOUNDCLOUD_KEY}'
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    networks:
+      - internal
+      - proxy
+    volumes:
+      - './:/usr/app'
+      - '/usr/app/node_modules'
+    labels:
+      - traefik.backend=app
+      - traefik.frontend.rule=Host:localhost
+      - traefik.port=3000
+      - traefik.enable=true
+    environment:
+      - 'REACT_APP_AUTH_URL=http://accounts.localhost:3000'
+      - 'REACT_APP_CORE_API_URL=http://api.localhost:3000'
+      - 'REACT_APP_CLIENT_NAME=ripple.fm'
+      - REACT_APP_YOUTUBE_KEY
+      - REACT_APP_SOUNDCLOUD_KEY
