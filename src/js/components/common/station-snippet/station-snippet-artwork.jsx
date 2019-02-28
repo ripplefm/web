@@ -6,7 +6,7 @@ export const ArtworkGradient = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: ${props => (props.expanded ? 'calc(0.5625 * 40vw)' : '225px')};
+  height: ${props => (props.expanded ? 'calc(0.5625 * 40vw)' : '200px')};
   border-top-left-radius: 0.3rem;
   border-top-right-radius: 0.3rem;
   background: linear-gradient(19deg, #faaca8 0%, #ddd6f3 100%);
