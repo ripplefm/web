@@ -55,7 +55,7 @@ const ButtonContainer = styled.div`
   }
 `;
 
-const HomeButton = styled(Button)`
+const FloatingButton = styled(Button)`
   box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
   text-transform: uppercase;
   border: none;
@@ -83,12 +83,12 @@ export default () => (
         world.
       </h2>
       <ButtonContainer>
-        <HomeButton type="default" icon="eye-o">
+        <FloatingButton type="default" icon="eye-o">
           Discover Rooms
-        </HomeButton>
-        <HomeButton type="primary" icon="plus">
+        </FloatingButton>
+        <FloatingButton type="primary" icon="plus">
           Create Room
-        </HomeButton>
+        </FloatingButton>
       </ButtonContainer>
     </TextContainer>
     <RoomContainer>
