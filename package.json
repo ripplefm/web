@@ -20,7 +20,7 @@
     "react-youtube": "^7.5.0",
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0",
-    "ripple.fm": "^0.1.2"
+    "ripple.fm": "^0.1.4"
   },
   "scripts": {
     "start": "react-app-rewired start",
