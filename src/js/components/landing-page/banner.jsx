@@ -1,8 +1,10 @@
 import React from 'react';
 import styled from 'react-emotion';
+import { Icon } from 'antd';
 import NavBar from '../common/navbar/navbar';
+import FloatingButton from '../common/floating-button';
 import FakeRoom from './fake-room/fake-room';
-import { Button } from 'antd';
+import { getRegisterUrl } from '../../utils/oauth-utils';
 
 const BannerContainer = styled.div`
   position: relative;
@@ -55,39 +57,69 @@ const ButtonContainer = styled.div`
   }
 `;
 
-const FloatingButton = styled(Button)`
-  box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
+const TitleText = styled.h1`
+  font-size: 4em;
+  font-weight: bolder;
+  color: white;
   text-transform: uppercase;
-  border: none;
-  ${props => (props.type === 'default' ? 'color: #ef5350' : '')};
-
-  &:first-of-type {
-    margin-botttom: 0px;
-    margin-right: 12px;
-  }
+  margin-bottom: 16px;
 
   @media (max-width: 768px) {
-    &:first-of-type {
-      margin-bottom: 12px;
-      margin-right: 0px;
-    }
+    margin-bottom: 4px;
+    font-size: 3em;
   }
 `;
 
+const SubText = styled.h2`
+  color: white;
+  margin-bottom: 16px;
+
+  @media (max-width: 768px) {
+    margin-bottom: 4px;
+    font-size: 1.5em;
+  }
+`;
+
+const BannerTriangle = styled.img`
+  width: 256px;
+  height: 256px;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  z-index: 0;
+  opacity: 0.5;
+  transform: translate(50%, -25%) rotate(180deg);
+`;
+
+const BannerWave = styled.img`
+  width: 125%;
+  height: auto;
+  position: absolute;
+  left: -25%;
+  bottom: 0px;
+  opacity: 0.1;
+  z-index: 0;
+`;
+
+const onGetStartedClicked = async () =>
+  (window.location.href = await getRegisterUrl());
+
 export default () => (
   <BannerContainer>
-    <NavBar padded transparent hideLogo />
+    <BannerTriangle src="/images/banner-triangle.svg" />
+    <BannerWave src="/images/banner-wave.svg" />
+    <NavBar padded transparent />
     <TextContainer>
-      <h2>
-        Create a room and seamlessly share media with people from all over the
-        world.
-      </h2>
+      <TitleText>Listen Together</TitleText>
+      <SubText>Create an account to start sharing tracks in stations</SubText>
       <ButtonContainer>
-        <FloatingButton type="default" icon="eye-o">
-          Discover Rooms
-        </FloatingButton>
-        <FloatingButton type="primary" icon="plus">
-          Create Room
+        <FloatingButton
+          type="default"
+          size="large"
+          onClick={onGetStartedClicked}
+        >
+          Get Started
+          <Icon type="arrow-right" />
         </FloatingButton>
       </ButtonContainer>
     </TextContainer>

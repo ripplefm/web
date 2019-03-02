@@ -4,6 +4,10 @@ import styled from 'react-emotion';
 import Banner from './banner';
 import { getStations } from '../../actions/stations-actions';
 import StationSnippetList from '../common/station-snippet/station-snippet-list';
+import About from './sections/about';
+import StationFeatures from './sections/station-features';
+import SignUpBox from './sections/sign-up-box';
+import Footer from './sections/footer';
 
 const mapStateToProps = state => {
   return {
@@ -25,6 +29,10 @@ const ContentContainer = styled.div`
   align-items: center;
 `;
 
+const StationContainer = styled.div`
+  margin: 64px 0px;
+`;
+
 class LandingPage extends Component {
   componentDidMount() {
     this.props.getStations();
@@ -36,12 +44,18 @@ class LandingPage extends Component {
       <div>
         <Banner />
         <ContentContainer>
-          <StationSnippetList
-            title="Popular Stations"
-            stations={stations}
-            loading={loading}
-            limit="5"
-          />
+          <StationContainer>
+            <StationSnippetList
+              title="Popular Stations"
+              stations={stations}
+              loading={loading}
+              limit="5"
+            />
+          </StationContainer>
+          <About />
+          <StationFeatures />
+          <SignUpBox />
+          <Footer />
         </ContentContainer>
       </div>
     );

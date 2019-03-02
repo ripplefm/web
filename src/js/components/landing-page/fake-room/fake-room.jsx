@@ -9,14 +9,15 @@ import FakeSwipeTabs from './fake-swipe-tabs';
 const Room = styled.div`
   position: relative;
   background: #212121;
-  overflow: hidden;
+  overflow: ${props => (props.highlight === undefined ? 'hidden' : 'visible')};
   width: 100%;
   height: 100%;
   border-radius: 0.3rem;
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
   transform-style: preserve-3d;
   transform-origin: center center;
-  transform: skew(0deg) rotateY(-35deg);
+  ${props =>
+    props.skewDisabled ? '' : 'transform: skew(0deg) rotateY(-35deg)'};
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
@@ -24,30 +25,31 @@ const Room = styled.div`
   border-right: 4px solid #101;
 
   @media (max-width: 768px) {
-    transform: skew(-2deg) rotateY(-35deg);
+    ${props =>
+      props.skewDisabled ? '' : 'transform: skew(-2deg) rotateY(-35deg)'};
     flex-direction: column;
     flex-wrap: none;
   }
 `;
 
-export default () => (
-  <Room>
-    <FakeNav>
+export default ({ skewDisabled, highlight }) => (
+  <Room skewDisabled={skewDisabled} highlight={highlight}>
+    <FakeNav highlight={highlight}>
       <img src="/images/logo.png" alt="ripple.fm logo" />
       <h5>ripple.fm</h5>
     </FakeNav>
-    <FakeSidebar>
-      <IconTab icon="search" />
-      <IconTab icon="solution" />
-      <IconTab icon="clock-circle-o" />
+    <FakeSidebar highlight={highlight}>
+      <IconTab highlight={highlight} icon="search" />
+      <IconTab highlight={highlight} icon="solution" />
+      <IconTab highlight={highlight} icon="clock-circle-o" />
     </FakeSidebar>
-    <FakePlayer src="/hero.webm" />
-    <FakeChat />
-    <FakeSwipeTabs>
-      <IconTab icon="search" />
-      <IconTab icon="solution" />
-      <IconTab icon="clock-circle-o" />
-      <IconTab icon="message" active />
+    <FakePlayer src="/hero.webm" highlight={highlight} />
+    <FakeChat highlight={highlight} />
+    <FakeSwipeTabs highlight={highlight}>
+      <IconTab highlight={highlight} icon="search" />
+      <IconTab highlight={highlight} icon="solution" />
+      <IconTab highlight={highlight} icon="clock-circle-o" />
+      <IconTab highlight={highlight} icon="message" active />
     </FakeSwipeTabs>
   </Room>
 );
