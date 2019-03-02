@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.2] - 2019-03-02
+
+### Added
+
+- Added Landing page to show when not logged in
+- Added basic redirect to empty dashboard page when logged in
+
 ## [0.1.1] - 2019-02-27
 
 ### Added
