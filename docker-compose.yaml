@@ -30,7 +30,7 @@ services:
     networks:
       - internal
   auth:
-    image: ripplefm/auth:0.1.3
+    image: ripplefm/auth:0.1.4
     labels:
       - traefik.backend=auth
       - traefik.frontend.rule=Host:accounts.localhost
@@ -58,7 +58,7 @@ services:
       - 'MAILGUN_API_KEY= '
       - 'MAILGUN_API_DOMAIN= '
   oauth2-creator:
-    image: ripplefm/auth:0.1.3
+    image: ripplefm/auth:0.1.4
     command:
       [
         'node',
@@ -96,7 +96,7 @@ services:
     networks:
       - internal
   api:
-    image: ripplefm/core-api:0.1.11
+    image: ripplefm/core-api:0.2.1
     command: bash -c "sleep 15; bin/ripple migrate && bin/ripple seed; bin/ripple foreground"
     restart: always
     links:
@@ -106,7 +106,7 @@ services:
       - proxy
     volumes:
       - './support/public_key.pem:/etc/config/public_key.pem'
-      - './support/station_templates.exs:/opt/app/lib/ripple-0.1.11/priv/repo/seeds/station_templates.exs'
+      - './support/station_templates.exs:/opt/app/lib/ripple-0.2.1/priv/repo/seeds/station_templates.exs'
     labels:
       - traefik.backend=api
       - traefik.frontend.rule=Host:api.localhost

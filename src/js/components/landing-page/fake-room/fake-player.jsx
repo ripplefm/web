@@ -15,6 +15,14 @@ const PlayerContainer = styled.div`
   width: calc(24vw - 32px);
   display: flex;
   flex-direction: column;
+  flex: 1;
+  z-index: ${props => (props.highlight === 'video' ? '1' : '0')};
+  background: ${props => (props.highlight === 'video' ? '#212121' : '')};
+  border: ${props => (props.highlight === 'video' ? '1px solid #ef5350' : '')};
+  box-shadow: ${props =>
+    props.highlight === 'video' ? '2px 2px 16px #ef5350' : ''};
+  transform: ${props => (props.highlight === 'video' ? 'scale(1.05)' : '')};
+  transition: all ease-in-out 250ms;
 
   @media (max-width: 768px) {
     width: 30vw;
@@ -32,8 +40,8 @@ const InfoContainer = styled.div`
   }
 `;
 
-export default ({ src }) => (
-  <PlayerContainer>
+export default ({ src, highlight }) => (
+  <PlayerContainer highlight={highlight}>
     <Video src={src} autoPlay muted loop />
     <InfoContainer>
       <FakeText marginTop="8px" height="7px" width="200px" />

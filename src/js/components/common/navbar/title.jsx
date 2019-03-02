@@ -1,6 +1,8 @@
 import styled from 'react-emotion';
 
 export default styled.h3`
-  font-weight: normal;
+  color: white;
+  font-weight: bolder;
   font-size: ${props => props.fontSize || ''};
+  margin-right: 12px;
 `;

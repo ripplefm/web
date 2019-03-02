@@ -4,12 +4,19 @@ import FakeText from './fake-text';
 
 const Chat = styled.div`
   width: calc(21% - 3px);
-  height: calc(30vh - 24px);
+  height: calc(100% - 24px);
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-end;
   overflow: hidden;
+  z-index: ${props => (props.highlight === 'chat' ? '1' : '0')};
+  background: ${props => (props.highlight === 'chat' ? '#212121' : '')};
+  border: ${props => (props.highlight === 'chat' ? '1px solid #ef5350' : '')};
+  box-shadow: ${props =>
+    props.highlight === 'chat' ? '2px 2px 16px #ef5350' : ''};
+  transform: ${props => (props.highlight === 'chat' ? 'scale(1.1)' : '')};
+  transition: all ease-in-out 250ms;
 
   @media (max-width: 768px) {
     width: 100%;
@@ -48,7 +55,7 @@ export default class FakeChat extends Component {
       {
         sender: '64px',
         color: '#039BE5',
-        width: ['60px', '90px']
+        width: ['60px']
       },
       {
         sender: '40px',
@@ -79,8 +86,9 @@ export default class FakeChat extends Component {
 
   render() {
     const { messages } = this.state;
+    const { highlight } = this.props;
     return (
-      <Chat>
+      <Chat highlight={highlight}>
         {messages.map((message, i) => (
           <FakeMessage key={i + message.sender} color={message.color}>
             <FakeText marginTop="8px" height="7px" width={message.sender} />
