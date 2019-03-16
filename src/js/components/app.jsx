@@ -6,6 +6,7 @@ import LandingPage from './landing-page';
 import Dashboard from './dashboard';
 import Stations from './stations/stations';
 import '../../css/common/common.css';
+import '../../css/common/scrollbar.css';
 
 const mapStateToProps = state => {
   return {

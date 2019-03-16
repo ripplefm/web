@@ -54,7 +54,7 @@ export default () => (
   <SignUpBox>
     <Circle opacity="0.025" transform="translate(-60%, -40%)" />
     <Circle opacity="0.05" transform="translate(-50%, -30%)" />
-    <Circle opacity="0.1" transform="translate(-40%, -20%" />
+    <Circle opacity="0.1" transform="translate(-40%, -20%)" />
     <Circle hiddenXs right opacity="0.025" transform="translate(60%, 40%)" />
     <Circle hiddenXs right opacity="0.05" transform="translate(50%, 30%)" />
     <Circle hiddenXs right opacity="0.1" transform="translate(40%, 20%)" />

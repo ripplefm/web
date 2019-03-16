@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.3] - 2019-03-16
+
+### Fixed
+
+- Landing page no longer has horizontal overflow
+- Landing page sign up box circle position fixed
+
+### Added
+
+- Css for webkit scrollbars
+
 ## [0.1.2] - 2019-03-02
 
 ### Added
