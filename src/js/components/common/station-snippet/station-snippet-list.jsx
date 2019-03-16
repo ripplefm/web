@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import styled from 'react-emotion';
-import StationSnippet, { StationCard } from './index';
+import StationSnippet, { StationCard } from './';
 import StationSnippetModal from '../modals/station-snippet-modal';
 
 const ScrollbarCover = styled.div`
@@ -68,7 +68,7 @@ export default class StationSnippetList extends Component {
         <SnippetContainer>
           {stations
             .slice(0, limit || stations.length)
-            .map((station, index) =>
+            .map(station =>
               clickedStation === undefined ||
               clickedStation.slug !== station.slug ? (
                 <StationSnippet
