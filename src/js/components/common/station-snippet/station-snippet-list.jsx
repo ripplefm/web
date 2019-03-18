@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
-import styled from 'react-emotion';
+import styled from '@emotion/styled';
 import StationSnippet, { StationCard } from './';
 import StationSnippetModal from '../modals/station-snippet-modal';
 

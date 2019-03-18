@@ -1,4 +1,4 @@
-import styled from 'react-emotion';
+import styled from '@emotion/styled';
 import { FadeOut } from '../animations/fade';
 
 export const ArtworkGradient = styled.div`

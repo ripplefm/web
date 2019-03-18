@@ -1,4 +1,4 @@
-import styled from 'react-emotion';
+import styled from '@emotion/styled';
 import { FadeIn, FadeOut } from '../animations/fade';
 
 const Sidebar = styled.div`

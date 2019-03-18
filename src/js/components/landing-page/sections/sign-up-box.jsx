@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'react-emotion';
+import styled from '@emotion/styled';
 import { Button, Icon } from 'antd';
 import Circle from '../../common/circle';
 import { getRegisterUrl } from '../../../utils/oauth-utils';

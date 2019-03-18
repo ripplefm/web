@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'react-emotion';
+import styled from '@emotion/styled';
 import { Icon } from 'antd';
 import GradientBar from '../../../common/gradient-bar';
 import FloatingButton from '../../../common/floating-button';

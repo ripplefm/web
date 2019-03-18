@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'react-emotion';
+import styled from '@emotion/styled';
 import { Avatar, Dropdown, Icon, Menu } from 'antd';
 import MutedText from '../muted-text';
 

@@ -1,4 +1,4 @@
-import styled from 'react-emotion';
+import styled from '@emotion/styled';
 
 const centeredStyle =
   'position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%)';

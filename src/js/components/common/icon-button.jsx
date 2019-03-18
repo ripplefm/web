@@ -1,6 +1,6 @@
 import React from 'react';
-import styled from 'react-emotion';
-import { Button, Icon } from 'antd';
+import styled from '@emotion/styled';
+import { Icon } from 'antd';
 
 const RoundButton = styled.div`
   display: flex;

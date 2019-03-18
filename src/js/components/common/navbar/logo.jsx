@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'react-emotion';
+import styled from '@emotion/styled';
 
 const Logo = styled.img`
   width: ${props => (props.large ? '64px' : '32px')};

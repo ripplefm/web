@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'react-emotion';
+import styled from '@emotion/styled';
 import { Card } from 'antd';
 import Artwork, { ArtworkGradient } from './station-snippet-artwork';
 import Player from '../../stations/station/player/station-player';

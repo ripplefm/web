@@ -1,5 +1,5 @@
 // import React from 'react';
-// import styled from 'react-emotion';
+// import styled from '@emotion/styled';
 
 // const Message = styled.li`
 //   ${props => `border-left: 3px solid ${props.userColor || 'green'}`};
@@ -78,7 +78,7 @@
 // export default ChatMessage;
 
 import React from 'react';
-import styled from 'react-emotion';
+import styled from '@emotion/styled';
 
 const Message = styled.li`
   ${props => `border-left: 3px solid ${props.userColor || 'green'}`};

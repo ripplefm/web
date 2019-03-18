@@ -1,5 +1,5 @@
 import { Button } from 'antd';
-import styled from 'react-emotion';
+import styled from '@emotion/styled';
 
 export default styled(Button)`
   box-shadow: ${props =>

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import styled from 'react-emotion';
+import styled from '@emotion/styled';
 import Banner from './banner';
 import { getStations } from '../../actions/stations-actions';
 import StationSnippetList from '../common/station-snippet/station-snippet-list';

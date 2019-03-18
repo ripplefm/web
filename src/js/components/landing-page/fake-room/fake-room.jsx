@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'react-emotion';
+import styled from '@emotion/styled';
 import FakeNav from './fake-nav';
 import FakeSidebar, { IconTab } from './fake-sidebar';
 import FakePlayer from './fake-player';
