@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import { init } from '../actions/oauth-actions';
 import LandingPage from './landing-page';
 import Dashboard from './dashboard';
-import Stations from './stations/stations';
 import '../../css/common/common.css';
 import '../../css/common/scrollbar.css';
 
@@ -27,15 +26,14 @@ class App extends Component {
 
   render() {
     const { loggedIn } = this.props;
-    return [
+
+    return (
       <Route
         key="home"
         path="/"
-        exact
         component={loggedIn ? Dashboard : LandingPage}
-      />,
-      <Route key="stations" path="/stations" component={Stations} />
-    ];
+      />
+    );
   }
 }
 
