@@ -30,7 +30,7 @@ services:
     networks:
       - internal
   auth:
-    image: ripplefm/auth:0.1.4
+    image: ripplefm/auth:0.2.1
     labels:
       - traefik.backend=auth
       - traefik.frontend.rule=Host:accounts.localhost
