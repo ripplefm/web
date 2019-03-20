@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from 'react-emotion';
-import { Button, Icon } from 'antd';
+import { Icon } from 'antd';
 import Circle from '../../common/circle';
+import RoundButton from '../../common/round-button';
 import { getRegisterUrl } from '../../../utils/oauth-utils';
 
 const SignUpBox = styled.div`
@@ -20,26 +21,6 @@ const SignUpBox = styled.div`
   overflow: hidden;
   text-align: center;
   position: relative;
-`;
-
-const RoundButton = styled(Button)`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  min-width: 100px;
-  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
-  border-radius: 16px;
-  padding-left: 12px;
-  padding-right: 4px;
-
-  & i {
-    background: white;
-    color: #ef5350;
-    border-radius: 50%;
-    padding: 4px;
-    align-self: flex-end;
-    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.25);
-  }
 `;
 
 const GetStartedText = styled.h1`

@@ -41,7 +41,15 @@ export default () => (
       Take turns playing, listening, and reacting to tracks together in
       stations.
     </p>
-    <FloatingButton type="primary" size="large" style={{ marginTop: '48px' }}>
+    <FloatingButton
+      type="primary"
+      size="large"
+      style={{
+        marginTop: '48px',
+        boxShadow: '0 4px 14px 0 #ef535063',
+        fontWeight: 'lighter'
+      }}
+    >
       Discover Stations <Icon type="arrow-right" />
     </FloatingButton>
   </Container>
