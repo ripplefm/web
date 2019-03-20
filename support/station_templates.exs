@@ -92,5 +92,33 @@ station_templates = [
     sources: %{
       playlist: "https://youtube.com/playlist?list=RDCLAK5uy_kpxnNxJpPZjLKbL9WgvrPuErWkUxMP6x4"
     }
+  },
+  %{
+    name: "TOP POP HITS",
+    tags: [],
+    sources: %{
+      playlist: "https://youtube.com/playlist?list=PL4fGSI1pDJn5kI81J1fYWK5eZRl1zJ5kM"
+    }
+  },
+  %{
+    name: "Hot Hip Hop",
+    tags: [],
+    sources: %{
+      playlist: "https://youtube.com/playlist?list=RDCLAK5uy_kNzdtZz5yF-crDDcYxlIDOju50Tyqnrig"
+    }
+  },
+  %{
+    name: "Hype Hip Hop",
+    tags: [],
+    sources: %{
+      playlist: "https://youtube.com/playlist?list=RDCLAK5uy_knmotk1evyMkjhlXW0cqvN05oUNtD6kJc"
+    }
+  },
+  %{
+    name: "Top Charts",
+    tags: [],
+    sources: %{
+      playlist: "https://youtube.com/playlist?list=PL4fGSI1pDJn4IeWA7bBJYh__qgOCRMkIh"
+    }
   }
 ]

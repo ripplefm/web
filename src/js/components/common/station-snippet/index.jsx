@@ -98,7 +98,7 @@ const StationSnippet = ({
     {expanded ? (
       <ButtonContainer>
         <Button onClick={onFollow}>FOLLOW</Button>
-        <Button onClick={onJoin}>JOIN</Button>
+        <Button onClick={onJoin}>LISTEN</Button>
       </ButtonContainer>
     ) : null}
     <div
