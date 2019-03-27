@@ -1,17 +1,18 @@
-const { injectBabelPlugin } = require('react-app-rewired');
-const rewireLess = require('react-app-rewire-less');
+const withLess = require('@zeit/next-less');
 
-module.exports = function override(config, env) {
-  config = injectBabelPlugin('emotion', config);
-  config = injectBabelPlugin(
-    ['import', { libraryName: 'antd', style: true }],
-    config
-  );
-  config = rewireLess.withLoaderOptions({
+if (typeof require !== 'undefined') {
+  require.extensions['.less'] = file => {};
+}
+
+module.exports = withLess({
+  lessLoaderOptions: {
+    javascriptEnabled: true,
     modifyVars: {
       '@primary-color': '#EF5350',
       '@body-background': '#212121',
       '@component-background': '#19191b',
+      '@font-family':
+        "'Roboto Condensed', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Helvetica Neue', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
       '@heading-color': 'fade(#fff, 85%)',
       '@text-color': 'fade(#fff, 65%)',
       '@text-color-secondary': 'fade(#fff, 43%)',
@@ -23,6 +24,5 @@ module.exports = function override(config, env) {
       '@background-color-active': '#333',
       '@border-color-base': '#222'
     }
-  })(config, env);
-  return config;
-};
+  }
+});
