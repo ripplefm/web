@@ -3,28 +3,28 @@
     "name": "TOP POP HITS",
     "slug": "top-pop-hits",
     "description": "",
-    "imagePath": "/images/banners/dua_lipa_banner.jpg",
+    "imagePath": "/static/images/banners/dua_lipa_banner.jpg",
     "gradientAmount": 45
   },
   {
     "name": "Hot Hip Hop",
     "slug": "hot-hip-hop",
     "description": "",
-    "imagePath": "/images/banners/travis_scott_banner.jpg",
+    "imagePath": "/static/images/banners/travis_scott_banner.jpg",
     "gradientAmount": 60
   },
   {
     "name": "Hype Hip Hop",
     "slug": "hype-hip-hop",
     "description": "",
-    "imagePath": "/images/banners/saint_jhn_banner.jpg",
+    "imagePath": "/static/images/banners/saint_jhn_banner.jpg",
     "gradientAmount": 55
   },
   {
     "name": "Top Charts",
     "slug": "top-charts",
     "description": "",
-    "imagePath": "/images/banners/ariana_grande_banner.jpg",
+    "imagePath": "/static/images/banners/ariana_grande_banner.jpg",
     "gradientAmount": 60
   }
 ]
