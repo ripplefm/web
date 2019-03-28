@@ -9,4 +9,4 @@ const Logo = styled.img`
     props.white ? 'brightness(350%) grayscale(250%)' : 'unset'};
 `;
 
-export default props => <Logo src="/images/logo.png" {...props} />;
+export default props => <Logo src="/static/images/logo.png" {...props} />;
