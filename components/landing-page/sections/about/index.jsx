@@ -56,7 +56,7 @@ const BackgroundImage = styled.img`
 
 export default () => (
   <Container>
-    <BackgroundImage src="/images/banner-wave.svg" />
+    <BackgroundImage src="/static/images/banner-wave.svg" />
     <RippleExplanation />
     <FeatureGrid>
       <FeatureSection

@@ -40,7 +40,7 @@ const FeatureIcon = styled.img`
 export default ({ name, children, icon, iconBackground }) => (
   <SectionContainer>
     <FeatureIconContainer style={{ background: iconBackground }}>
-      <FeatureIcon src={`/images/icons/${icon}.svg`} />
+      <FeatureIcon src={`/static/images/icons/${icon}.svg`} />
     </FeatureIconContainer>
     <h1>{name}</h1>
     <p>{children}</p>

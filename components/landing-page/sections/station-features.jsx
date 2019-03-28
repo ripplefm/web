@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import styled from '@emotion/styled';
 import GradientBar from '../../common/gradient-bar';
 import Circle from '../../common/circle';
-import FakeRoom from '../fake-room/fake-room';
+import FakeStation from '../../common/fake-station';
 
 const SectionContainer = styled.div`
   width: 100%;
@@ -80,16 +80,22 @@ const StationFeatureContainer = styled.div`
     transition: opacity ease-in-out 150ms;
     font-weight: bold;
     text-transform: uppercase;
-    font-size: 2em;
+    font-size: 1.75em;
     letter-spacing: 0.05em;
+    margin-top: 12px;
+    margin-bottom: 0px;
     margin-left: 12px;
+  }
+
+  & img {
+    margin-top: 12px;
   }
 
   & p {
     letter-spacing: 0.025em;
     font-size: 1.1em;
     transform-origin: center top;
-    transition: transform ease-in-out 250ms, opacity ease-in-out 350ms;
+    transition: transform ease-in-out 500ms, opacity linear 350ms;
     opacity: ${props => (props.active ? '1' : '0')};
     height: ${props => (props.active ? '100%' : '0px')};
     transform: ${props => (props.active ? 'scaleY(1)' : 'scaleY(0)')};
@@ -99,13 +105,13 @@ const StationFeatureContainer = styled.div`
 const getVerticalDistance = currentActive => {
   switch (currentActive) {
     case 'video':
-      return '15%';
+      return '27%';
     case 'chat':
-      return '120%';
+      return '163%';
     case 'solution':
-      return '228%';
+      return '298%';
     default:
-      return '335%';
+      return '433%';
   }
 };
 
@@ -200,41 +206,41 @@ export default class StationFeatures extends Component {
         <GradientBar />
         <Circle
           right
-          opacity="0.03"
-          transform="translate(30%, -25%)"
-          xsTransform="translate(60%, -10%)"
+          style={{ opacity: '0.03', top: '50%' }}
+          transform="translate(30%, -50%)"
+          xsTransform="translate(60%, -50%)"
         />
 
         <StationFeaturesContainer>
           <DemoStationContainer>
-            <FakeRoom skewDisabled highlight={active} />
+            <FakeStation skewDisabled highlight={active} />
           </DemoStationContainer>
           <StationFeatureList>
             <ActiveFeatureCard active={active} />
             <StationFeature
               active={active === 'video'}
-              img="/images/icons/video.svg"
+              img="/static/images/icons/video.svg"
               title="Synchronized"
               desc="Seamlessly synchronized video and audio"
               onClick={() => this.setActive('video')}
             />
             <StationFeature
               active={active === 'chat'}
-              img="/images/icons/chat.svg"
+              img="/static/images/icons/chat.svg"
               title="Live Chat"
               desc="See real time reactions in the chat"
               onClick={() => this.setActive('chat')}
             />
             <StationFeature
               active={active === 'solution'}
-              img="/images/icons/collaborative.svg"
+              img="/static/images/icons/collaborative.svg"
               title="Collaborative"
               desc="Take turns playing tracks in the queue"
               onClick={() => this.setActive('solution')}
             />
             <StationFeature
               active={active === 'clock-circle-o'}
-              img="/images/icons/clock.svg"
+              img="/static/images/icons/clock.svg"
               title="Track History"
               desc="See past tracks and save to your playlists"
               onClick={() => this.setActive('clock-circle-o')}

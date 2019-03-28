@@ -1,8 +1,9 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import { Button, Icon } from 'antd';
+import { Icon } from 'antd';
+import FloatingButton from '../../common/buttons/floating-button';
 import Circle from '../../common/circle';
-import { getRegisterUrl } from '../../../utils/oauth-utils';
+import { getRegisterUrl } from '../../../lib/utils/oauth-utils';
 
 const SignUpBox = styled.div`
   display: flex;
@@ -22,26 +23,6 @@ const SignUpBox = styled.div`
   position: relative;
 `;
 
-const RoundButton = styled(Button)`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  min-width: 100px;
-  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
-  border-radius: 16px;
-  padding-left: 12px;
-  padding-right: 4px;
-
-  & i {
-    background: white;
-    color: #ef5350;
-    border-radius: 50%;
-    padding: 4px;
-    align-self: flex-end;
-    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.25);
-  }
-`;
-
 const GetStartedText = styled.h1`
   z-index: 1;
   font-weight: bolder;
@@ -59,13 +40,12 @@ export default () => (
     <Circle hiddenXs right opacity="0.05" transform="translate(50%, 30%)" />
     <Circle hiddenXs right opacity="0.1" transform="translate(40%, 20%)" />
     <GetStartedText>Ready to get started?</GetStartedText>
-    <RoundButton
-      type="primary"
-      size="large"
+    <FloatingButton
+      type="default"
       style={{ marginTop: '24px' }}
       onClick={async () => (window.location.href = await getRegisterUrl())}
     >
       Create an account <Icon type="arrow-right" />
-    </RoundButton>
+    </FloatingButton>
   </SignUpBox>
 );

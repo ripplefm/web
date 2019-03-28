@@ -26,6 +26,7 @@ const LogoContainer = styled.div`
     font-size: 2em;
     letter-spacing: 0.025em;
     color: white;
+    margin-top: 16px;
   }
 `;
 
@@ -37,7 +38,7 @@ const FooterLink = styled.a`
 export default () => (
   <FooterContainer>
     <LogoContainer>
-      <img src="/images/logo.png" alt="ripple.fm logo" />
+      <img src="/static/images/logo.png" alt="ripple.fm logo" />
       <h1>ripple.fm</h1>
     </LogoContainer>
 

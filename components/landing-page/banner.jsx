@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { Icon } from 'antd';
-import NavBar from '../common/navbar/navbar';
-import FloatingButton from '../common/floating-button';
-import FakeRoom from './fake-room/fake-room';
-import { getRegisterUrl } from '../../utils/oauth-utils';
+import NavBar from '../common/navbar';
+import FloatingButton from '../common/buttons/floating-button';
+import FakeStation from '../common/fake-station';
+import { getRegisterUrl } from '../../lib/utils/oauth-utils';
 
 const BannerContainer = styled.div`
   position: relative;
@@ -32,7 +32,7 @@ const TextContainer = styled.div`
   align-items: center;
 `;
 
-const RoomContainer = styled.div`
+const StationContainer = styled.div`
   position: absolute;
   width: 30vw;
   height: 30vh;
@@ -58,7 +58,7 @@ const ButtonContainer = styled.div`
 `;
 
 const TitleText = styled.h1`
-  font-size: 4em;
+  font-size: 3.75em;
   font-weight: bolder;
   color: white;
   text-transform: uppercase;
@@ -68,15 +68,24 @@ const TitleText = styled.h1`
     margin-bottom: 4px;
     font-size: 3em;
   }
+
+  @media (max-width: 400px) {
+    font-size: 2.5em;
+  }
 `;
 
 const SubText = styled.h2`
   color: white;
   margin-bottom: 16px;
+  font-size: 1.25em;
 
   @media (max-width: 768px) {
     margin-bottom: 4px;
     font-size: 1.5em;
+  }
+
+  @media (max-width: 400px) {
+    font-size: 1em;
   }
 `;
 
@@ -106,25 +115,21 @@ const onGetStartedClicked = async () =>
 
 export default () => (
   <BannerContainer>
-    <BannerTriangle src="/images/banner-triangle.svg" />
-    <BannerWave src="/images/banner-wave.svg" />
+    <BannerTriangle src="/static/images/banner-triangle.svg" />
+    <BannerWave src="/static/images/banner-wave.svg" />
     <NavBar padded transparent />
     <TextContainer>
       <TitleText>Listen Together</TitleText>
       <SubText>Create an account to start sharing tracks in stations</SubText>
       <ButtonContainer>
-        <FloatingButton
-          type="default"
-          size="large"
-          onClick={onGetStartedClicked}
-        >
+        <FloatingButton type="default" onClick={onGetStartedClicked}>
           Get Started
           <Icon type="arrow-right" />
         </FloatingButton>
       </ButtonContainer>
     </TextContainer>
-    <RoomContainer>
-      <FakeRoom />
-    </RoomContainer>
+    <StationContainer>
+      <FakeStation />
+    </StationContainer>
   </BannerContainer>
 );

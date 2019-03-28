@@ -2,7 +2,7 @@ import React from 'react';
 import styled from '@emotion/styled';
 import { Icon } from 'antd';
 import GradientBar from '../../../common/gradient-bar';
-import FloatingButton from '../../../common/floating-button';
+import FloatingButton from '../../../common/buttons/floating-button';
 
 const Container = styled.div`
   flex: 1;
@@ -41,7 +41,7 @@ export default () => (
       Take turns playing, listening, and reacting to tracks together in
       stations.
     </p>
-    <FloatingButton type="primary" size="large" style={{ marginTop: '48px' }}>
+    <FloatingButton type="primary" style={{ marginTop: '48px' }}>
       Discover Stations <Icon type="arrow-right" />
     </FloatingButton>
   </Container>
