@@ -22,6 +22,10 @@ const Chat = styled.div`
     width: 100%;
     height: calc(30vh - 32px - 0.5625 * 30vw);
   }
+
+  @media (max-height: 1000px) and (min-width: 768px) {
+    width: calc(30% - 3px);
+  }
 `;
 
 const FakeInput = styled.div`
@@ -43,7 +47,7 @@ const FakeMessage = styled.div`
   width: 100%;
   padding: 3px;
 
-  &:nth-child(odd) {
+  &:nth-of-type(odd) {
     background: rgba(0, 0, 0, 0.1);
   }
 `;

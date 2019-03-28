@@ -27,6 +27,19 @@ const PlayerContainer = styled.div`
   @media (max-width: 768px) {
     width: 30vw;
   }
+
+  @media (max-height: 950px) {
+    background: ${props => (props.highlight === 'video' ? '#212121' : 'black')};
+    height: 15vw;
+  }
+
+  @media (max-height: 785px) {
+    height: 12vw;
+  }
+
+  @media (max-height: 675px) {
+    height: 10vw;
+  }
 `;
 
 const InfoContainer = styled.div`
@@ -34,6 +47,8 @@ const InfoContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
+  background: #212121;
+  height: 100%;
 
   @media (max-width: 768px) {
     display: none;

@@ -6,14 +6,15 @@ import FakePlayer from './fake-player';
 import FakeChat from './fake-chat';
 import FakeSwipeTabs from './fake-swipe-tabs';
 
-const Room = styled.div`
+const Station = styled.div`
   position: relative;
   background: #212121;
   overflow: ${props => (props.highlight === undefined ? 'hidden' : 'visible')};
   width: 100%;
   height: 100%;
   border-radius: 0.3rem;
-  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  box-shadow: 16px 8px 28px rgba(0, 0, 0, 0.25),
+    8px 4px 10px rgba(0, 0, 0, 0.22);
   transform-style: preserve-3d;
   transform-origin: center center;
   ${props =>
@@ -33,9 +34,9 @@ const Room = styled.div`
 `;
 
 export default ({ skewDisabled, highlight }) => (
-  <Room skewDisabled={skewDisabled} highlight={highlight}>
+  <Station skewDisabled={skewDisabled} highlight={highlight}>
     <FakeNav highlight={highlight}>
-      <img src="/images/logo.png" alt="ripple.fm logo" />
+      <img src="/static/images/logo.png" alt="ripple.fm logo" />
       <h5>ripple.fm</h5>
     </FakeNav>
     <FakeSidebar highlight={highlight}>
@@ -43,7 +44,7 @@ export default ({ skewDisabled, highlight }) => (
       <IconTab highlight={highlight} icon="solution" />
       <IconTab highlight={highlight} icon="clock-circle-o" />
     </FakeSidebar>
-    <FakePlayer src="/hero.webm" highlight={highlight} />
+    <FakePlayer src="/static/hero.webm" highlight={highlight} />
     <FakeChat highlight={highlight} />
     <FakeSwipeTabs highlight={highlight}>
       <IconTab highlight={highlight} icon="search" />
@@ -51,5 +52,5 @@ export default ({ skewDisabled, highlight }) => (
       <IconTab highlight={highlight} icon="clock-circle-o" />
       <IconTab highlight={highlight} icon="message" active />
     </FakeSwipeTabs>
-  </Room>
+  </Station>
 );

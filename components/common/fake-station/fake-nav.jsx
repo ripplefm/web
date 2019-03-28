@@ -16,6 +16,10 @@ export default styled.div`
     margin-right: 4px;
   }
 
+  & h5 {
+    margin-top: 4px;
+  }
+
   @media (max-width: 768px) {
     height: 16px;
 
