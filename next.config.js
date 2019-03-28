@@ -28,6 +28,7 @@ module.exports = withLess({
   publicRuntimeConfig: {
     youtubeApiKey: process.env.YOUTUBE_API_KEY,
     soundcloudApiKey: process.env.SOUNDCLOUD_API_KEY,
+    rippleUrl: process.env.RIPPLE_URL,
     coreApiUrl: process.env.CORE_API_URL,
     authUrl: process.env.AUTH_URL,
     oauthClientName: process.env.OAUTH_CLIENT_NAME
