@@ -1,10 +1,26 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { Layout } from 'antd';
+import DashboardMenu from './dashboard-menu';
+import DashboardHome from './pages/dashboard-home';
 
-export default ({ user, popularStations, followingStations }) => (
-  <div>
-    <h1>dashboard</h1>
-    <h2>user: {JSON.stringify(user)}</h2>
-    <h2>popular stations: {JSON.stringify(popularStations)}</h2>
-    <h2>following: {JSON.stringify(followingStations)}</h2>
-  </div>
-);
+const renderContent = (path, props) => {
+  switch (path) {
+    default:
+      return <DashboardHome {...props} />;
+  }
+};
+
+export default class Dashboard extends Component {
+  render() {
+    const { currentPath } = this.props;
+
+    return (
+      <Layout style={{ minHeight: '100vh', flexDirection: 'row' }}>
+        <DashboardMenu currentPath={currentPath} />
+        <Layout.Content style={{ background: '#212121' }}>
+          {renderContent(currentPath, this.props)}
+        </Layout.Content>
+      </Layout>
+    );
+  }
+}
