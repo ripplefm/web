@@ -18,6 +18,9 @@ class RippleDocument extends Document {
             name="viewport"
             content="width=device-width, initial-scale=1, maximum-scale=1"
           />
+          <meta name="theme-color" content="#ef5350" />
+          <link rel="manifest" href="/static/manifest.json" />
+          <link rel="shortcut icon" href="/static/favicon.ico" />
         </Head>
         <body>
           <Main />
