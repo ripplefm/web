@@ -1,40 +1,33 @@
 {
   "name": "web",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "author": "Daniel Rudnitski <danielrudn@gmail.com>",
   "license": "MIT",
   "main": "src",
   "private": false,
   "dependencies": {
-    "antd": "^2.13.10",
+    "@emotion/core": "^10.0.9",
+    "@emotion/styled": "^10.0.9",
+    "antd": "^3.15.2",
     "axios": "^0.17.1",
-    "emotion": "^8.0.10",
-    "http-server": "^0.11.1",
+    "express": "^4.16.4",
+    "next": "^8.0.3",
+    "nookies": "^2.0.4",
     "react": "^16.1.1",
     "react-dom": "^16.1.1",
-    "react-emotion": "^8.0.10",
-    "react-redux": "^5.0.6",
-    "react-router": "^4.2.0",
-    "react-router-dom": "^4.2.2",
-    "react-scripts": "1.0.17",
     "react-youtube": "^7.5.0",
-    "redux": "^3.7.2",
-    "redux-thunk": "^2.2.0",
-    "ripple.fm": "^0.1.4"
+    "ripple.fm": "^0.2.5"
   },
   "scripts": {
-    "start": "react-app-rewired start",
-    "build": "react-app-rewired build",
-    "test": "react-app-rewired test --env=jsdom",
-    "eject": "react-scripts eject",
-    "lint": "prettier --debug-check \"src/**/*.js*\"",
-    "prod": "yarn build && http-server ./build --gzip"
+    "start": "node server.js",
+    "dev": "next",
+    "build": "next build",
+    "lint": "prettier --debug-check \"lib/**/*.js*\" \"components/**/*.js*\" \"pages/**/*.js*\" \"server.js\""
   },
   "devDependencies": {
-    "babel-plugin-emotion": "^8.0.10",
+    "@zeit/next-less": "^1.0.1",
     "babel-plugin-import": "^1.6.2",
-    "prettier": "^1.8.2",
-    "react-app-rewire-less": "2.1.1",
-    "react-app-rewired": "^1.3.5"
+    "less": "^3.9.0",
+    "prettier": "^1.8.2"
   }
 }

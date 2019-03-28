@@ -1,4 +1,4 @@
-import styled from 'react-emotion';
+import styled from '@emotion/styled';
 import formatDuration from '../../../../utils/format-duration';
 
 export default styled.div`

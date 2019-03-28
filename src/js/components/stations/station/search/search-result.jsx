@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'react-emotion';
+import styled from '@emotion/styled';
 import { Dropdown, Icon, Menu } from 'antd';
 import ResultArtwork from './search-result-artwork';
 import MenuItem from '../../../common/menu-item';

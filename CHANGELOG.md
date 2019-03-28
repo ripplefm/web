@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.3.0] - 2019-03-28
+
+### Changed
+
+- Migrate to server side rendering using next.js from create-react-app
+
 ## [0.2.0] - 2019-03-20
 
 ### Added

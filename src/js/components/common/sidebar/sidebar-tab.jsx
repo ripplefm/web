@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'react-emotion';
+import styled from '@emotion/styled';
 import { Tooltip, Icon } from 'antd';
 
 const Tab = styled.div`
