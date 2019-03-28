@@ -25,6 +25,10 @@ module.exports = withLess({
       '@border-color-base': '#222'
     }
   },
+  serverRuntimeConfig: {
+    coreApiUrl: process.env.CORE_API_URL_INTERNAL,
+    authUrl: process.env.AUTH_URL_INTERNAL
+  },
   publicRuntimeConfig: {
     youtubeApiKey: process.env.YOUTUBE_API_KEY,
     soundcloudApiKey: process.env.SOUNDCLOUD_API_KEY,

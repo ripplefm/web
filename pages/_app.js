@@ -3,7 +3,9 @@ import { Tag } from 'antd';
 import App, { Container } from 'next/app';
 import Head from 'next/head';
 import { makePublicRouterInstance } from 'next/router';
+import nookies from 'nookies';
 import { Global } from '@emotion/core';
+import { parseHash } from '../lib/utils/oauth-utils';
 import styles from '../components/styles/common';
 
 export default class RippleApp extends App {
@@ -21,6 +23,14 @@ export default class RippleApp extends App {
     return {
       router: makePublicRouterInstance(this.props.router)
     };
+  }
+
+  componentDidMount() {
+    if (window.location.hash.includes('access_token')) {
+      const hash = parseHash(window.location.hash);
+      window.history.replaceState({}, document.title, '.');
+      nookies.set(null, 'jwt', hash.access_token);
+    }
   }
 
   render() {

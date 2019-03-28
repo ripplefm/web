@@ -19,7 +19,7 @@
     "react-youtube": "^7.5.0",
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0",
-    "ripple.fm": "^0.1.4"
+    "ripple.fm": "^0.2.5"
   },
   "scripts": {
     "start": "node server.js",
