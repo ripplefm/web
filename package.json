@@ -15,10 +15,7 @@
     "nookies": "^2.0.4",
     "react": "^16.1.1",
     "react-dom": "^16.1.1",
-    "react-redux": "^5.0.6",
     "react-youtube": "^7.5.0",
-    "redux": "^3.7.2",
-    "redux-thunk": "^2.2.0",
     "ripple.fm": "^0.2.5"
   },
   "scripts": {
