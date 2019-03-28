@@ -3,7 +3,7 @@ import LandingPage from '../components/landing-page';
 import Dashboard from '../components/dashboard';
 import { getOrCreate } from '../lib/services/ripple-api';
 import wrapUnauthorized from '../lib/utils/wrap-unauthorized';
-import featuredStations from '../src/data/featured-stations.json';
+import featuredStations from '../lib/data/featured-stations.json';
 
 export default class Index extends Component {
   static async getInitialProps(context) {
