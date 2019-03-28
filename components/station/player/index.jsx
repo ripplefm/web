@@ -1,6 +1,6 @@
 import React from 'react';
 import ResponsivePlayerContainer from './responsive-player-container';
-import MutedText from '../../../common/muted-text';
+import MutedText from '../../common/muted-text';
 import YouTubePlayer from './youtube-player';
 
 const renderPlayer = (track, muted) => (
@@ -14,8 +14,6 @@ const renderPlayer = (track, muted) => (
   </ResponsivePlayerContainer>
 );
 
-const StationPlayer = ({ track, muted }) => (
+export default ({ track, muted }) => (
   <div className="station-player">{renderPlayer(track, muted)}</div>
 );
-
-export default StationPlayer;

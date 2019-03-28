@@ -24,7 +24,7 @@ const StatisticValue = styled.span`
 
 const StationStatistic = ({ name, value }) => (
   <StatisticContainer>
-    <img src={`/images/icons/${name}.svg`} alt={name} />
+    <img src={`/static/images/icons/${name}.svg`} alt={name} />
     <StatisticValue>{value}</StatisticValue>
   </StatisticContainer>
 );

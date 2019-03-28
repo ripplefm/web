@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { FadeOut } from '../animations/fade';
+import { FadeOut } from '../../styles/animations/fade';
 
 export const ArtworkGradient = styled.div`
   display: flex;

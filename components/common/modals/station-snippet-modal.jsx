@@ -1,7 +1,7 @@
 import React from 'react';
 import { Modal } from 'antd';
 import StationSnippet from '../../common/station-snippet';
-import '../../../../css/modals/station-snippet-modal.css';
+import '../../styles/modals/station-snippet-modal';
 
 const StationSnippetModal = ({ station, visible, onJoin, onCancel }) => (
   <Modal

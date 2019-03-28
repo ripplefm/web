@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
+import Router from 'next/router';
 import styled from '@emotion/styled';
-import StationSnippet, { StationCard } from './';
-import StationSnippetModal from '../modals/station-snippet-modal';
+import StationSnippet, { StationCard } from './station-snippet';
+import StationSnippetModal from './modals/station-snippet-modal';
 
 const ScrollbarCover = styled.div`
   width: 100%;
@@ -43,8 +43,7 @@ const ExtraSpacer = styled.div`
 export default class StationSnippetList extends Component {
   state = {
     clicked: false,
-    clickedStation: undefined,
-    join: false
+    clickedStation: undefined
   };
 
   onStationClicked = clickedStation => {
@@ -57,13 +56,10 @@ export default class StationSnippetList extends Component {
   };
 
   render() {
-    const { clicked, clickedStation, join } = this.state;
+    const { clicked, clickedStation } = this.state;
     const { loading, stations, title, limit } = this.props;
     return (
       <div style={{ padding: '48px 0px 48px 0px', position: 'relative' }}>
-        {clicked && join ? (
-          <Redirect push to={`/stations/${clickedStation.slug}`} />
-        ) : null}
         <Title>{title}</Title>
         <SnippetContainer>
           {stations
@@ -87,7 +83,7 @@ export default class StationSnippetList extends Component {
         <StationSnippetModal
           station={clickedStation}
           visible={!!clickedStation && clicked}
-          onJoin={() => this.setState({ join: true })}
+          onJoin={() => Router.push(`/stations/${clickedStation.slug}`)}
           onCancel={this.onCloseStationModal}
         />
       </div>

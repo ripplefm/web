@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 
-const ResponsivePlayerContainer = styled.div`
+export default styled.div`
   position: relative;
   display: block;
   width: 100%;
@@ -24,5 +24,3 @@ const ResponsivePlayerContainer = styled.div`
     border: 0px;
   }
 `;
-
-export default ResponsivePlayerContainer;

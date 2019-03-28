@@ -2,9 +2,8 @@ import React from 'react';
 import styled from '@emotion/styled';
 import { Card } from 'antd';
 import Artwork, { ArtworkGradient } from './station-snippet-artwork';
-import Player from '../../stations/station/player/station-player';
-
 import StationSnippetStats from './station-snippet-stats';
+import Player from '../../station/player';
 
 export const StationCard = styled(Card)`
   position: relative;
@@ -98,7 +97,7 @@ const StationSnippet = ({
     {expanded ? (
       <ButtonContainer>
         <Button onClick={onFollow}>FOLLOW</Button>
-        <Button onClick={onJoin}>JOIN</Button>
+        <Button onClick={onJoin}>LISTEN</Button>
       </ButtonContainer>
     ) : null}
     <div
