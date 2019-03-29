@@ -17,7 +17,7 @@ export default class Dashboard extends Component {
     return (
       <Layout style={{ minHeight: '100vh', flexDirection: 'row' }}>
         <DashboardMenu currentPath={currentPath} />
-        <Layout.Content style={{ background: '#212121' }}>
+        <Layout.Content style={{ background: '#212121', overflowX: 'hidden' }}>
           {renderContent(currentPath, this.props)}
         </Layout.Content>
       </Layout>
