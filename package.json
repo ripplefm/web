@@ -15,12 +15,13 @@
     "nookies": "^2.0.4",
     "react": "^16.1.1",
     "react-dom": "^16.1.1",
+    "react-swipeable-views": "^0.13.1",
     "react-youtube": "^7.5.0",
-    "ripple.fm": "^0.2.5"
+    "ripple.fm": "^0.2.6"
   },
   "scripts": {
     "start": "node server.js",
-    "dev": "next",
+    "dev": "node server.js",
     "build": "next build",
     "lint": "prettier --debug-check \"lib/**/*.js*\" \"components/**/*.js*\" \"pages/**/*.js*\" \"server.js\""
   },
