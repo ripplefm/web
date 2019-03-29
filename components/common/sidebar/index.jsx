@@ -1,14 +1,14 @@
 import styled from '@emotion/styled';
-import { FadeIn, FadeOut } from '../animations/fade';
+import { FadeIn, FadeOut } from '../../styles/animations/fade';
 
 const Sidebar = styled.div`
   height: calc(100vh - 48px);
-  width: 20%;
+  width: 35%;
   background: #212121;
   position: absolute;
   top: 48px;
   left: 0px;
-  transform: translateX(${props => (props.open ? '0px' : 'calc(55px - 20vw)')});
+  transform: translateX(${props => (props.open ? '0px' : 'calc(55px - 35vw)')});
   ${props =>
     props.open
       ? 'box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23)'
@@ -33,7 +33,7 @@ export const SidebarCover = styled.div`
   display: ${props => (props.openedOnce ? 'block' : 'none')};
   position: fixed;
   top: ${props => (props.open ? '-48px' : '-100vh')};
-  left: 20vw;
+  left: 35vw;
   width: 100vw;
   height: 100vh;
   background: rgba(0, 0, 0, 0.6);
