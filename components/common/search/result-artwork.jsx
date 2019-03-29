@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import formatDuration from '../../../../utils/format-duration';
+import formatDuration from '../../../lib/utils/format-duration';
 
 export default styled.div`
   position: relative;
