@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import DashboardBanner from './dashboard-banner';
-import StationSnippetList from '../../../common/station-snippet-list';
+import StationSnippetList from '../../common/station-snippet-list';
+import withDashboardMenu from '../../../lib/with-dashboard-menu';
 
 const ContentContainer = styled.div`
   padding: 16px;
@@ -12,7 +13,11 @@ const ContentContainer = styled.div`
   }
 `;
 
-export default ({ featuredStation, popularStations, followingStations }) => (
+const DashboardHome = ({
+  featuredStation,
+  popularStations,
+  followingStations
+}) => (
   <div>
     <DashboardBanner station={featuredStation} />
     <ContentContainer>
@@ -21,3 +26,5 @@ export default ({ featuredStation, popularStations, followingStations }) => (
     </ContentContainer>
   </div>
 );
+
+export default withDashboardMenu(DashboardHome);
