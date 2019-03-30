@@ -23,12 +23,8 @@ const Tab = styled.div`
   }
 `;
 
-const SidebarTab = ({ open, name, icon, sidebarSelector }) => (
-  <Tooltip
-    placement="right"
-    title={name.toUpperCase()}
-    getPopupContainer={() => document.querySelector(sidebarSelector || 'body')}
-  >
+const SidebarTab = ({ open, name, icon }) => (
+  <Tooltip placement="right" title={name.toUpperCase()}>
     <Tab open={open}>
       <Icon type={icon} />
     </Tab>

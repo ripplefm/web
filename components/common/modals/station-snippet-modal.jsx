@@ -1,7 +1,8 @@
 import React from 'react';
 import { Modal } from 'antd';
+import { Global } from '@emotion/core';
 import StationSnippet from '../../common/station-snippet';
-import '../../styles/modals/station-snippet-modal';
+import styles from '../../styles/modals/station-snippet-modal';
 
 const StationSnippetModal = ({ station, visible, onJoin, onCancel }) => (
   <Modal
@@ -13,6 +14,7 @@ const StationSnippetModal = ({ station, visible, onJoin, onCancel }) => (
     width="40%"
     onCancel={onCancel}
   >
+    <Global styles={styles} />
     <StationSnippet
       expanded="true"
       loading={station === undefined}

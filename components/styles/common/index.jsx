@@ -32,5 +32,14 @@ export default css`
     transform: scale(1.1);
   }
 
+  .ant-input:focus {
+    border-color: transparent;
+    box-shadow: none;
+  }
+
+  .ant-input:hover {
+    border-color: transparent;
+  }
+
   ${scrollbar};
 `;

@@ -83,7 +83,12 @@ export default class StationSnippetList extends Component {
         <StationSnippetModal
           station={clickedStation}
           visible={!!clickedStation && clicked}
-          onJoin={() => Router.push(`/stations/${clickedStation.slug}`)}
+          onJoin={() =>
+            Router.push(
+              `/stations?slug=${clickedStation.slug}`,
+              `/stations/${clickedStation.slug}`
+            )
+          }
           onCancel={this.onCloseStationModal}
         />
       </div>
