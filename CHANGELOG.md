@@ -7,6 +7,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.6.0] - 2019-03-30
+
+### Added
+
+- Progress bar when changing routes
+- Landing page now has banner with error or success messages if needed
+- Add higher order components for `withUser` and `withDashboardMenu`
+
+### Changed
+
+- Navbar now shows current username
+
 ## [0.5.0] - 2019-03-30
 
 ### Added
