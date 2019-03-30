@@ -1,5 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
 import styled from '@emotion/styled';
+import MessageBanner from './message-banner';
 import Banner from './banner';
 import StationSnippetList from '../common/station-snippet-list';
 import About from './sections/about';
@@ -18,8 +19,9 @@ const StationContainer = styled.div`
   margin: 64px 0px;
 `;
 
-export default ({ stations }) => (
+export default ({ stations, query }) => (
   <div>
+    <MessageBanner query={query} />
     <Banner />
     <ContentContainer>
       <StationContainer>

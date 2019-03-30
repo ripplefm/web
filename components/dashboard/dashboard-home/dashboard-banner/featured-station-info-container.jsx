@@ -12,7 +12,7 @@ export default styled.div`
     font-weight: bolder;
     color: white;
     text-transform: uppercase;
-    margin: 16px 0p 0px 0px 0px;
+    margin: 0px;
   }
 
   & h2 {

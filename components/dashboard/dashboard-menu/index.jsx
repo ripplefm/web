@@ -11,7 +11,8 @@ export default ({ currentPath }) => (
     width="300"
     style={{
       background: '#19191b',
-      position: 'relative'
+      position: 'relative',
+      zIndex: '99'
     }}
   >
     <LogoText />
@@ -59,6 +60,6 @@ export default ({ currentPath }) => (
       <Icon type="compass" />
       Recommended
     </MenuLink>
-    <MenuSection>Your Playlists</MenuSection>
+    <MenuSection>Playlists</MenuSection>
   </Layout.Sider>
 );
