@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import Link from 'next/link';
-import { Tag } from 'antd';
+import { Icon, Tag } from 'antd';
 import Nav from './nav';
 import Logo from './logo';
 import Title from './title';
@@ -10,7 +10,7 @@ import { getLoginUrl, getRegisterUrl } from '../../../lib/utils/oauth-utils';
 
 const ButtonContainer = styled.div`
   z-index: 1;
-  margin-top: 16px;
+  margin-top: ${props => (props.transparent ? '8px' : '0px')};
   margin-right: 16px;
 
   @media (max-width: 768px) {
@@ -32,6 +32,16 @@ const AlphaTag = styled(Tag)`
   }
 `;
 
+const UserText = styled.h3`
+  margin-top: 8px;
+  margin-right: 16px;
+  color: white;
+
+  & i {
+    font-size: 0.75em;
+  }
+`;
+
 const onLoginClicked = async () => (window.location = await getLoginUrl());
 
 const onSignupClicked = async () => (window.location = await getRegisterUrl());
@@ -46,9 +56,11 @@ const NavBar = ({ padded, transparent, user, hideLogo }) => (
       </LogoContainer>
     </Link>
     {user ? (
-      <h3>{user.username}</h3>
+      <UserText>
+        {user.username} <Icon type="caret-down" />
+      </UserText>
     ) : (
-      <ButtonContainer>
+      <ButtonContainer transparent={transparent}>
         <FloatingButton
           type="default"
           ghost
