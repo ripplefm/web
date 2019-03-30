@@ -23,7 +23,7 @@ export default styled(Button)`
   }
 
   &:first-of-type {
-    margin-botttom: 0px;
+    margin-bottom: 0px;
     margin-right: 12px;
   }
 

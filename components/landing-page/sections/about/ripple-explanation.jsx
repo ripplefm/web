@@ -43,7 +43,6 @@ export default () => (
     </p>
     <FloatingButton
       type="primary"
-      size="large"
       style={{
         marginTop: '48px',
         boxShadow: '0 4px 14px 0 #ef535063',

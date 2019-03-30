@@ -4,6 +4,7 @@ export default styled.div`
   position: relative;
   display: block;
   width: 100%;
+  height: 100%;
   padding: 0px;
   overflow: hidden;
   background: black;

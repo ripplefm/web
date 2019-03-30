@@ -15,7 +15,6 @@ export default class Search extends Component {
   };
 
   search = async (provider, query) => {
-    console.log(`Searching ${query} on ${provider}`, YouTube);
     if (provider === 'YouTube') {
       this.setState({ loading: false, results: await YouTube.search(query) });
     }

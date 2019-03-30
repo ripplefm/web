@@ -2,15 +2,32 @@ import React, { Component } from 'react';
 import YouTube from 'react-youtube';
 
 export default class YouTubePlayer extends Component {
-  state = { started: false };
+  state = { started: false, start: 0 };
+
+  componentDidMount() {
+    if (this.props.track) {
+      this.setState({
+        start: Math.abs(this.props.track.timestamp - Date.now()) / 1000
+      });
+    }
+  }
+
+  componentDidUpdate(prevProps) {
+    if (
+      prevProps.track &&
+      this.props.track &&
+      prevProps.track.name !== this.props.track.name
+    ) {
+      this.setState({
+        start: Math.abs(this.props.track.timestamp - Date.now()) / 1000
+      });
+    }
+  }
 
   render() {
-    const { started } = this.state;
+    const { started, start } = this.state;
     const { track, muted } = this.props;
-    const start =
-      track && track.timestamp
-        ? Math.abs(track.timestamp - Date.now()) / 1000
-        : 0;
+
     return (
       <div
         className={`${track === null || track === undefined ? 'hidden' : ''}`}
