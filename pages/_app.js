@@ -2,11 +2,16 @@ import React from 'react';
 import { Tag } from 'antd';
 import App, { Container } from 'next/app';
 import Head from 'next/head';
-import { makePublicRouterInstance } from 'next/router';
+import Router, { makePublicRouterInstance } from 'next/router';
+import NProgress from 'nprogress';
 import nookies from 'nookies';
 import { Global } from '@emotion/core';
 import { parseHash } from '../lib/utils/oauth-utils';
 import styles from '../components/styles/common';
+
+Router.events.on('routeChangeStart', () => NProgress.start());
+Router.events.on('routeChangeComplete', () => NProgress.done());
+Router.events.on('routeChangeError', () => NProgress.done());
 
 export default class RippleApp extends App {
   static async getInitialProps({ Component, ctx }) {

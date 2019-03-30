@@ -1,5 +1,6 @@
 import { css } from '@emotion/core';
-import scrollbar from './scrollbar';
+import scrollbarStyles from './scrollbar';
+import loaderStyles from './loader';
 
 export default css`
   body {
@@ -41,5 +42,6 @@ export default css`
     border-color: transparent;
   }
 
-  ${scrollbar};
+  ${scrollbarStyles}
+  ${loaderStyles};
 `;
