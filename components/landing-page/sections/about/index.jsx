@@ -12,7 +12,7 @@ const Container = styled.div`
   justify-content: center;
   align-items: flex-start;
   background: #19191b;
-  padding: 100px 20%;
+  padding: 100px 15%;
   overflow: hidden;
 
   @media (max-width: 768px) {
@@ -27,12 +27,20 @@ const FeatureGrid = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr;
-  justify-items: center;
+  grid-row-gap: 32px;
+  grid-column-gap: 32px;
+  justify-items: start;
   align-items: center;
+  margin-left: 48px;
   flex: 2;
   width: 100%;
 
   @media (max-width: 768px) {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @media (max-width: 600px) {
+    margin-left: 24px;
     grid-template-columns: 1fr;
   }
 `;

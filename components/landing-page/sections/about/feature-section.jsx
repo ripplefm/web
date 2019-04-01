@@ -3,8 +3,6 @@ import styled from '@emotion/styled';
 
 const SectionContainer = styled.div`
   z-index: 1;
-  padding: 16px;
-  margin: 16px;
   transition: all ease-in-out 200ms;
 
   & h1 {

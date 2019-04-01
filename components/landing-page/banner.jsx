@@ -81,10 +81,6 @@ const SubText = styled.h2`
 
   @media (max-width: 768px) {
     margin-bottom: 4px;
-    font-size: 1.5em;
-  }
-
-  @media (max-width: 400px) {
     font-size: 1em;
   }
 `;

@@ -21,6 +21,10 @@ const SignUpBox = styled.div`
   overflow: hidden;
   text-align: center;
   position: relative;
+
+  @media (max-width: 768px) {
+    height: 28vh;
+  }
 `;
 
 const GetStartedText = styled.h1`
