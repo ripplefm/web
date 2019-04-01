@@ -26,6 +26,10 @@ const Chat = styled.div`
   @media (max-height: 1000px) and (min-width: 768px) {
     width: calc(30% - 3px);
   }
+
+  @media (max-height: 1080px) and (min-width: 768px) {
+    width: calc(30% - 3px);
+  }
 `;
 
 const FakeInput = styled.div`

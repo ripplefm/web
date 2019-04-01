@@ -28,7 +28,11 @@ const PlayerContainer = styled.div`
     width: 30vw;
   }
 
-  @media (max-height: 950px) {
+  @media (max-height: 1080px) and (min-width: 768px) {
+    width: calc(70% - 32px);
+  }
+
+  @media (max-height: 950px) and (min-width: 768px) {
     background: ${props => (props.highlight === 'video' ? '#212121' : 'black')};
     height: 15vw;
   }
@@ -57,7 +61,7 @@ const InfoContainer = styled.div`
 
 export default ({ src, highlight }) => (
   <PlayerContainer highlight={highlight}>
-    <Video src={src} autoPlay muted loop />
+    <Video src={src} poster="/static/hero.png" autoPlay muted loop />
     <InfoContainer>
       <FakeText marginTop="8px" height="7px" width="200px" />
       <FakeText height="7px" width="128px" />
