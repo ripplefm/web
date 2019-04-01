@@ -31,6 +31,7 @@ const SnippetContainer = styled.div`
   overflow-y: visible;
   max-width: 100vw;
   min-height: 350px;
+  padding-bottom: 16px;
 `;
 
 // Provides extra space after scrolling past the last StationCard
