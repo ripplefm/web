@@ -24,8 +24,7 @@ The web interface for ripple.fm
 
 This project was built with:
 
-- [React](https://reactjs.org/) and [create-react-app](https://github.com/facebook/create-react-app)
-- [Redux](https://redux.js.org/)
+- Server side rendered [React](https://reactjs.org/) with [next.js](https://nextjs.org/)
 - Styled components with [react-emotion](https://github.com/emotion-js/emotion)
 - [Ant Design](https://ant.design/docs/react/introduce)
 
@@ -98,11 +97,17 @@ To stop:
 $ docker-compose down
 ```
 
+Then, we can start the web service locally using the following command:
+
+```sh
+$ yarn dev
+```
+
 Once started, we can access the services at the following URLs:
 
 - Web: http://localhost:3000
-- Auth: http://accounts.localhost:3000
-- Core API: http://api.localhost:3000
+- Auth: http://localhost:3001
+- Core API: http://localhost:4000
 
 # Production
 
@@ -111,7 +116,3 @@ Once started, we can access the services at the following URLs:
 Travis CI will automatically build and push tagged commits (matching the version in `package.json`) to the docker image repository.
 
 After an image is built and pushed, update the [helm chart for ripple.fm](https://github.com/ripplefm/charts) to set the updated tag for the web service.
-
-## Notes on configuration
-
-Currently the production docker image builds and starts an http server for the application on start up in order to support dynamic environment variables for the application. To start the app in production we simply run `yarn prod` or `npm run prod`
