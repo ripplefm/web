@@ -125,7 +125,9 @@ export default class Info extends Component {
             ) : null}
           </div>
         </Container>
-        <Reactions sendReaction={sendReaction} disabled={!canFollow} />
+        {station && station.current_track ? (
+          <Reactions sendReaction={sendReaction} disabled={!canFollow} />
+        ) : null}
         <ButtonContainer>
           <Button icon="share-alt" type="primary" ghost disabled>
             Share
