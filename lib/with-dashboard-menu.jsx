@@ -1,6 +1,17 @@
 import React, { Component } from 'react';
+import styled from '@emotion/styled';
 import { Layout } from 'antd';
 import DashboardMenu from '../components/dashboard/dashboard-menu';
+
+const LayoutContent = styled(Layout.Content)`
+  background: #212121;
+  overflow-x: hidden;
+  margin-left: 300px;
+
+  @media (max-width: 992px) {
+    margin-left: 0px;
+  }
+`;
 
 export default function(DashboardComponent) {
   return class WithDashboardMenu extends Component {
@@ -16,11 +27,9 @@ export default function(DashboardComponent) {
       return (
         <Layout style={{ minHeight: '100vh', flexDirection: 'row' }}>
           <DashboardMenu currentPath={currentPath} />
-          <Layout.Content
-            style={{ background: '#212121', overflowX: 'hidden ' }}
-          >
+          <LayoutContent>
             <DashboardComponent {...this.props} />
-          </Layout.Content>
+          </LayoutContent>
         </Layout>
       );
     }
