@@ -9,6 +9,7 @@ import Player from '../components/station/player';
 import Info from '../components/station/station-info';
 import Chat from '../components/station/chat';
 import SwipeableTabs from '../components/station/swipeable-tabs';
+import ReactionAnimationContainer from '../components/station/reaction-animation-container';
 
 const getStationWelcomeMessage = station => ({
   sender: { username: 'Server', id: '666' },
@@ -24,7 +25,14 @@ export default class Station extends Component {
   trackStartedRef = undefined;
   trackFinishedRef = undefined;
   chatRef = undefined;
-  state = { station: undefined, socket: undefined, messages: [], width: 0 };
+  reactionRef = undefined;
+  state = {
+    station: undefined,
+    socket: undefined,
+    messages: [],
+    reactions: [],
+    width: 0
+  };
 
   static async getInitialProps(context) {
     const { slug } = context.query;
@@ -38,6 +46,10 @@ export default class Station extends Component {
 
   onSendMessage = text => {
     this.state.socket.push('chat', { text });
+  };
+
+  onSendReaction = reaction => {
+    this.state.socket.push('reaction', { reaction });
   };
 
   addTrackToQueue = track => {
@@ -68,12 +80,39 @@ export default class Station extends Component {
     }
   };
 
+  onReactionReceived = reaction => {
+    const reactions = this.state.reactions.filter(
+      r => Date.now() - r.timestamp < 1000
+    );
+    reaction.timestamp = Date.now();
+    this.setState({ reactions: [...reactions, reaction] });
+  };
+
+  positionReactionContainer = () => {
+    const { width } = this.state;
+    const player = document.querySelector('.station-player div');
+    const reactionContainer = document.querySelector('.reaction-container');
+    if (width <= 768) {
+      reactionContainer.style.top =
+        player.getBoundingClientRect().bottom - 32 + 'px';
+      reactionContainer.style.left =
+        player.getBoundingClientRect().right - 32 + 'px';
+    } else {
+      reactionContainer.style.top =
+        player.getBoundingClientRect().bottom - 48 + 'px';
+      reactionContainer.style.left =
+        player.getBoundingClientRect().right - 48 + 'px';
+    }
+  };
+
   onResize = () => {
+    this.positionReactionContainer();
     this.setState({ width: window.innerWidth });
   };
 
   async componentDidMount() {
     const { slug } = this.props;
+    this.positionReactionContainer();
     this.setState({ station: this.props.station, width: window.innerWidth });
     window.addEventListener('resize', this.onResize);
     const ripple = await getOrCreate();
@@ -92,6 +131,7 @@ export default class Station extends Component {
     );
 
     this.chatRef = socket.on('station_chat', this.onMessageReceived);
+    this.reactionRef = socket.on('station_reaction', this.onReactionReceived);
   }
 
   componentWillUnmount() {
@@ -104,12 +144,14 @@ export default class Station extends Component {
       this.trackFinishedRef = undefined;
       socket.off('station_chat', this.chatRef);
       this.chatRef = undefined;
+      socket.off('station_reaction', this.reactionRef);
+      this.reactionRef = undefined;
       socket.leave();
     }
   }
 
   render() {
-    const { width, messages } = this.state;
+    const { width, messages, reactions } = this.state;
     const { user } = this.props;
     const station = this.state.station || this.props.station;
     if (station === undefined) {
@@ -120,13 +162,19 @@ export default class Station extends Component {
         </div>
       );
     }
+
     return (
       <StationContainer>
         <NavBar user={user} />
         <StationSidebar onAddToQueue={this.addTrackToQueue} user={user} />
         <Player track={station.current_track} />
+        <ReactionAnimationContainer reactions={reactions} />
         {width >= 992 ? (
-          <Info station={station} canFollow={user !== undefined} />
+          <Info
+            station={station}
+            canFollow={user !== undefined}
+            sendReaction={this.onSendReaction}
+          />
         ) : null}
         {width >= 992 ? (
           <Chat
@@ -142,6 +190,7 @@ export default class Station extends Component {
           sendMessage={this.onSendMessage}
           onAddToQueue={this.addTrackToQueue}
           width={width}
+          sendReaction={this.onSendReaction}
           user={user}
         />
       </StationContainer>

@@ -1,6 +1,7 @@
 import { css } from '@emotion/core';
 import scrollbarStyles from './scrollbar';
 import loaderStyles from './loader';
+import emojiStyles from './emoji';
 
 export default css`
   body {
@@ -46,4 +47,5 @@ export default css`
 
   ${scrollbarStyles}
   ${loaderStyles}
+  ${emojiStyles}
 `;
