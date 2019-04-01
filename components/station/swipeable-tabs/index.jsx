@@ -56,11 +56,17 @@ export default class SwipeableTabs extends Component {
       canFollow,
       messages,
       sendMessage,
-      onAddToQueue
+      onAddToQueue,
+      sendReaction
     } = this.props;
     let children = [
       <Search key="search" onAddToQueue={onAddToQueue} />,
-      <Info key="info" station={station} canFollow={canFollow} />,
+      <Info
+        key="info"
+        station={station}
+        canFollow={canFollow}
+        sendReaction={sendReaction}
+      />,
       <h1 key="queue">queue</h1>,
       <h1 key="history">history</h1>
     ];

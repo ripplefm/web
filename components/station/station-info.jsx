@@ -3,6 +3,7 @@ import styled from '@emotion/styled';
 import { keyframes } from '@emotion/core';
 import { Button } from 'antd';
 import FollowStationButton from '../common/buttons/follow-station-button';
+import Reactions from './reactions';
 
 const InfoContainer = styled.div`
   position: relative;
@@ -94,7 +95,7 @@ const TrackName = styled.a`
 
 export default class Info extends Component {
   render() {
-    const { station, canFollow } = this.props;
+    const { station, canFollow, sendReaction } = this.props;
     return (
       <InfoContainer className="station-info">
         {station && station.current_track ? (
@@ -124,6 +125,9 @@ export default class Info extends Component {
             ) : null}
           </div>
         </Container>
+        {station && station.current_track ? (
+          <Reactions sendReaction={sendReaction} disabled={!canFollow} />
+        ) : null}
         <ButtonContainer>
           <Button icon="share-alt" type="primary" ghost disabled>
             Share
