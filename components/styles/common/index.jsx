@@ -21,9 +21,11 @@ export default css`
   }
 
   .ant-layout-sider-zero-width-trigger {
-    top: 0px;
+    position: fixed;
+    top: -2px;
+    left: 0px;
     z-index: 99;
-    background: transparent;
+    background: #212121;
     transition: transform ease-in-out 150ms;
   }
 
@@ -43,5 +45,5 @@ export default css`
   }
 
   ${scrollbarStyles}
-  ${loaderStyles};
+  ${loaderStyles}
 `;
