@@ -134,6 +134,15 @@ const stationStyles = css`
       }
     }
 
+    @media (min-width: 1200px) and (max-height: 1080px) {
+      .station {
+        display: grid;
+        grid-template-columns: 55px auto 350px;
+        grid-template-rows: 48px calc(72vw * 9 / 16) auto;
+        grid-template-areas: 'nav nav nav' 'sidebar player chat' 'sidebar info chat';
+      }
+    }
+
     @media (min-width: 1200px) and (max-height: 1050px) {
       .station {
         display: grid;

@@ -11,8 +11,11 @@ export default ({ currentPath }) => (
     width="300"
     style={{
       background: '#19191b',
-      position: 'relative',
-      zIndex: '99'
+      position: 'fixed',
+      zIndex: '99',
+      overflow: 'auto',
+      height: '100vh',
+      left: '0px'
     }}
   >
     <LogoText />

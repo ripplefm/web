@@ -17,7 +17,7 @@ export const StationCard = styled(Card)`
   box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
   overflow: hidden;
   filter: drop-shadow(0 0 0.25rem rgba(0, 0, 0, 0.6));
-  transition: filter ease-in-out 150ms, transform ease-in-out 150ms;
+  transition: filter ease-in-out 250ms, transform ease-in-out 250ms;
   transform-style: preserve-3d;
 
   &:first-of-type {

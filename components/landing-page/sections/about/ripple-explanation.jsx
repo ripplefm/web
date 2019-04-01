@@ -45,7 +45,7 @@ export default () => (
       type="primary"
       style={{
         marginTop: '48px',
-        boxShadow: '0 4px 14px 0 #ef535063',
+        boxShadow: '0 4px 14px 0 rgba(239,83,80,0.39)',
         fontWeight: 'lighter'
       }}
     >
