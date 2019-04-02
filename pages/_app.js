@@ -3,17 +3,20 @@ import { Tag } from 'antd';
 import App, { Container } from 'next/app';
 import Head from 'next/head';
 import Router, { makePublicRouterInstance } from 'next/router';
+import getConfig from 'next/config';
+import withGA from 'next-ga';
 import NProgress from 'nprogress';
 import nookies from 'nookies';
 import { Global } from '@emotion/core';
 import { parseHash } from '../lib/utils/oauth-utils';
 import styles from '../components/styles/common';
+const { publicRuntimeConfig } = getConfig();
 
 Router.events.on('routeChangeStart', () => NProgress.start());
 Router.events.on('routeChangeComplete', () => NProgress.done());
 Router.events.on('routeChangeError', () => NProgress.done());
 
-export default class RippleApp extends App {
+class RippleApp extends App {
   static async getInitialProps({ Component, ctx }) {
     let pageProps = {};
 
@@ -53,3 +56,5 @@ export default class RippleApp extends App {
     );
   }
 }
+
+export default withGA(publicRuntimeConfig.googleAnalyticsId, Router)(RippleApp);

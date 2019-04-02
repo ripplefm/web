@@ -30,6 +30,7 @@ module.exports = withLess({
     authUrl: process.env.AUTH_URL_INTERNAL
   },
   publicRuntimeConfig: {
+    googleAnalyticsId: process.env.GOOGLE_ANALYTICS_ID,
     youtubeApiKey: process.env.YOUTUBE_API_KEY,
     soundcloudApiKey: process.env.SOUNDCLOUD_API_KEY,
     rippleUrl: process.env.RIPPLE_URL,
