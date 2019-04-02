@@ -2,12 +2,27 @@ import React, { Component } from 'react';
 import YouTube from 'react-youtube';
 
 export default class YouTubePlayer extends Component {
-  state = { started: false, start: 0 };
+  state = {
+    started: false,
+    playerVars: {
+      showinfo: 0,
+      controls: 0,
+      autoplay: 1,
+      disablekb: 1,
+      iv_load_policy: 3,
+      modestbranding: 1,
+      rel: 0,
+      start: 0
+    }
+  };
 
   componentDidMount() {
     if (this.props.track) {
       this.setState({
-        start: Math.abs(this.props.track.timestamp - Date.now()) / 1000
+        playerVars: {
+          ...this.state.playerVars,
+          start: this.props.track.current_time / 1000 || 0
+        }
       });
     }
   }
@@ -16,17 +31,18 @@ export default class YouTubePlayer extends Component {
     if (
       prevProps.track &&
       this.props.track &&
-      prevProps.track.name !== this.props.track.name
+      prevProps.track.url !== this.props.track.url
     ) {
       this.setState({
-        start: Math.abs(this.props.track.timestamp - Date.now()) / 1000
+        playerVars: { ...this.state.playerVars, start: 0 }
       });
     }
   }
 
   render() {
-    const { started, start } = this.state;
+    const { started, playerVars } = this.state;
     const { track, muted } = this.props;
+    const { start } = playerVars;
 
     return (
       <div
@@ -40,18 +56,7 @@ export default class YouTubePlayer extends Component {
                 )}`
               : ''
           }
-          opts={{
-            playerVars: {
-              showinfo: 0,
-              controls: 0,
-              autoplay: 1,
-              disablekb: 1,
-              iv_load_policy: 3,
-              modestbranding: 1,
-              rel: 0,
-              start
-            }
-          }}
+          opts={{ playerVars }}
           onReady={e => {
             e.target.setVolume(90);
             if (muted || (!started && window.innerWidth < 768)) {
