@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+
+- Youtube player start times for tracks are fixed
+
 ## [0.7.0] - 2019-04-01
 
 ### Added
