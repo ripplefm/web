@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import styled from '@emotion/styled';
 import { Icon } from 'antd';
 import GradientBar from '../../../common/gradient-bar';
@@ -41,15 +42,17 @@ export default () => (
       Take turns playing, listening, and reacting to tracks together in
       stations.
     </p>
-    <FloatingButton
-      type="primary"
-      style={{
-        marginTop: '48px',
-        boxShadow: '0 4px 14px 0 rgba(239,83,80,0.39)',
-        fontWeight: 'lighter'
-      }}
-    >
-      Discover Stations <Icon type="arrow-right" />
-    </FloatingButton>
+    <a href="#stations">
+      <FloatingButton
+        type="primary"
+        style={{
+          marginTop: '48px',
+          boxShadow: '0 4px 14px 0 rgba(239,83,80,0.39)',
+          fontWeight: 'lighter'
+        }}
+      >
+        Discover Stations <Icon type="arrow-right" />
+      </FloatingButton>
+    </a>
   </Container>
 );

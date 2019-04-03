@@ -201,7 +201,7 @@ export default class StationFeatures extends Component {
   render() {
     const { active } = this.state;
     return (
-      <SectionContainer>
+      <SectionContainer id="stations">
         <SectionTitle>Station Features</SectionTitle>
         <GradientBar />
         <Circle

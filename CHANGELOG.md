@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.7.2] - 2019-04-02
+
+### Fixed
+
+- Actually fixed issue with player track times
+
+### Changed
+
+- Discover stations button on landing page now links to station features section
+
 ## [0.7.1] - 2019-04-02
 
 ### Added

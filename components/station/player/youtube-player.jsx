@@ -28,11 +28,7 @@ export default class YouTubePlayer extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (
-      prevProps.track &&
-      this.props.track &&
-      prevProps.track.url !== this.props.track.url
-    ) {
+    if (JSON.stringify(prevProps.track) !== JSON.stringify(this.props.track)) {
       this.setState({
         playerVars: { ...this.state.playerVars, start: 0 }
       });
